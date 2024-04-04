@@ -1,0 +1,310 @@
+﻿
+$red-light: #d42626;
+$red-medium: #be2222;
+$red-dark: #970707;
+
+$stripe: #635bff;
+$color-stripe: #635bff;
+$color-stripe-light: #bbb8ff;
+$credit-card-logo: $color-stripe;
+
+$coolgrayF8: #f8fafc;
+$coolgrayF4: #f4f6f9;
+$coolgrayF0: #f0f2f7;
+$coolgrayEC: #eceef2;
+$coolgrayE7: #e7e9ef;
+$coolgrayE3: #e3e5ea;
+$coolgrayDF: #dfe0e5;
+$coolgrayDB: #dbdde2;
+$coolgrayD6: #d6d8dc;
+$coolgrayD2: #d2d4d8;
+$coolgrayCE: #ced0d4;
+$coolgrayCA: #caccd2;
+$coolgrayC6: #c6c8ce;
+$coolgrayC1: #c1c3c9;
+$coolgrayBD: #bdbfc5;
+$coolgrayB9: #b9bbc2;
+$coolgrayB5: #b5b5ba;
+$coolgrayB0: #b0b1b6;
+$coolgrayAC: #acadb2;
+$coolgrayA8: #a8a9ae;
+$coolgrayA4: #a4a5aa;
+$coolgrayA0: #a0a1a6;
+$coolgray9B: #9b9ca2;
+$coolgray97: #97989e;
+$coolgray93: #93949a;
+$coolgray8F: #8f9096;
+$coolgray8A: #8a8c92;
+$coolgray86: #86888e;
+$coolgray82: #82838a;
+$coolgray7E: #7e7f86;
+$coolgray7A: #7a7b82;
+$coolgray76: #76777e;
+$coolgray72: #72737a;
+$coolgray6E: #6e6f76;
+$coolgray6A: #6a6b71;
+$coolgray66: #66676d;
+$coolgray62: #626369;
+$coolgray5E: #5e5f65;
+$coolgray5A: #5a5b61;
+$coolgray56: #56575c;
+$coolgray52: #525358;
+$coolgray4E: #4e4f54;
+$coolgray4A: #4a4b50;
+$coolgray46: #46474b;
+$coolgray42: #424347;
+$coolgray3F: #3f3f43;
+$coolgray3B: #3b3b3f;
+$coolgray37: #37373b;
+$coolgray33: #333336;
+$coolgray2F: #2f2f32;
+$coolgray2B: #2b2b2e;
+$coolgray27: #27272a;
+$coolgray23: #232325;
+$coolgray1F: #1f1f21;
+$coolgray1B: #1b1b1d;
+$coolgray17: #171719;
+$coolgray13: #131315;
+$coolgray0F: #0f0f10;
+$coolgray0B: #0b0b0c;
+$coolgray07: #070708;
+
+.color1 {
+    background-color: $coolgrayF8;
+}
+
+.color2 {
+    background-color: $coolgrayF4;
+}
+
+.color3 {
+    background-color: $coolgrayF0;
+}
+
+.color4 {
+    background-color: $coolgrayEC;
+}
+
+.color5 {
+    background-color: $coolgrayE7;
+}
+
+.color6 {
+    background-color: $coolgrayE3;
+}
+
+.color7 {
+    background-color: $coolgrayDF;
+}
+
+.color8 {
+    background-color: $coolgrayDB;
+}
+
+.color9 {
+    background-color: $coolgrayD6;
+}
+
+.color10 {
+    background-color: $coolgrayD2;
+}
+
+.color11 {
+    background-color: $coolgrayCE;
+}
+
+.color12 {
+    background-color: $coolgrayCA;
+}
+
+.color13 {
+    background-color: $coolgrayC6;
+}
+
+.color14 {
+    background-color: $coolgrayC1;
+}
+
+.color15 {
+    background-color: $coolgrayBD;
+}
+
+.color16 {
+    background-color: $coolgrayB9;
+}
+
+.color17 {
+    background-color: $coolgrayB5;
+}
+
+.color18 {
+    background-color: $coolgrayB0;
+}
+
+.color19 {
+    background-color: $coolgrayAC;
+}
+
+.color20 {
+    background-color: $coolgrayAC;
+}
+
+.color21 {
+    background-color: $coolgrayA4;
+}
+
+.color22 {
+    background-color: $coolgrayA0;
+}
+
+.color23 {
+    background-color: $coolgray9B;
+}
+
+.color24 {
+    background-color: $coolgray97;
+}
+
+.color25 {
+    background-color: $coolgray93;
+}
+
+.color26 {
+    background-color: $coolgray8F;
+}
+
+.color27 {
+    background-color: $coolgray8F;
+}
+
+.color28 {
+    background-color: $coolgray86;
+}
+
+.color29 {
+    background-color: $coolgray82;
+}
+
+.color30 {
+    background-color: $coolgray7E;
+}
+
+.color31 {
+    background-color: $coolgray7A;
+}
+
+.color32 {
+    background-color: $coolgray76;
+}
+
+.color33 {
+    background-color: $coolgray72;
+}
+
+.color34 {
+    background-color: $coolgray6E;
+}
+
+.color35 {
+    background-color: $coolgray6A;
+}
+
+.color36 {
+    background-color: $coolgray66;
+}
+
+.color37 {
+    background-color: $coolgray62;
+}
+
+.color38 {
+    background-color: $coolgray5E;
+}
+
+.color39 {
+    background-color: $coolgray5A;
+}
+
+.color40 {
+    background-color: $coolgray56;
+}
+
+.color41 {
+    background-color: $coolgray52;
+}
+
+.color42 {
+    background-color: $coolgray4E;
+}
+
+.color43 {
+    background-color: $coolgray4A;
+}
+
+.color44 {
+    background-color: $coolgray46;
+}
+
+.color45 {
+    background-color: $coolgray42;
+}
+
+.color46 {
+    background-color: $coolgray3F;
+}
+
+.color47 {
+    background-color: $coolgray3B;
+}
+
+.color48 {
+    background-color: $coolgray37;
+}
+
+.color49 {
+    background-color: $coolgray33;
+}
+
+.color50 {
+    background-color: $coolgray2F;
+}
+
+.color51 {
+    background-color: $coolgray2B;
+}
+
+.color52 {
+    background-color: $coolgray27;
+}
+
+.color53 {
+    background-color: $coolgray23;
+}
+
+.color54 {
+    background-color: $coolgray1F;
+}
+
+.color55 {
+    background-color: $coolgray1B;
+}
+
+.color56 {
+    background-color: $coolgray17;
+}
+
+.color57 {
+    background-color: $coolgray13;
+}
+
+.color58 {
+    background-color: $coolgray0F;
+}
+
+.color59 {
+    background-color: $coolgray0B;
+}
+
+.color60 {
+    background-color: $coolgray07;
+}

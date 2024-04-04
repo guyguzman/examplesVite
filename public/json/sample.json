@@ -1,0 +1,233 @@
+[
+    {
+        "_id": "6424d07a08d78ba50a745661",
+        "index": 0,
+        "guid": "db0ee140-1497-4ad4-97fa-192931ab8107",
+        "isActive": true,
+        "balance": "$2,643.93",
+        "picture": "http://placehold.it/32x32",
+        "age": 37,
+        "eyeColor": "brown",
+        "name": "Lauri Pittman",
+        "gender": "female",
+        "company": "REMOTION",
+        "email": "lauripittman@remotion.com",
+        "phone": "+1 (821) 422-3521",
+        "address": "593 Croton Loop, National, Delaware, 9407",
+        "registered": "2015-05-19T09:12:41 +07:00",
+        "latitude": 81.571908,
+        "longitude": 142.798477,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Leonard Pearson"
+            },
+            {
+                "id": 1,
+                "name": "Michelle Brooks"
+            },
+            {
+                "id": 2,
+                "name": "Lynda Sampson"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07af493d69b85d1e122",
+        "index": 1,
+        "guid": "ac1c2d8a-ab7e-4364-bf89-391bd769088f",
+        "isActive": false,
+        "balance": "$1,354.37",
+        "picture": "http://placehold.it/32x32",
+        "age": 24,
+        "eyeColor": "brown",
+        "name": "Patton Vaughan",
+        "gender": "male",
+        "company": "ROUGHIES",
+        "email": "pattonvaughan@roughies.com",
+        "phone": "+1 (903) 551-2530",
+        "address": "419 Schenectady Avenue, Caron, Colorado, 1102",
+        "registered": "2018-04-30T04:07:21 +07:00",
+        "latitude": -84.356999,
+        "longitude": -105.406488,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Angelita Hatfield"
+            },
+            {
+                "id": 1,
+                "name": "Riley James"
+            },
+            {
+                "id": 2,
+                "name": "James Lambert"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07aeceeaef7516b4a35",
+        "index": 2,
+        "guid": "514b30b6-67b0-4f2b-99bb-9ed68065c725",
+        "isActive": false,
+        "balance": "$2,072.63",
+        "picture": "http://placehold.it/32x32",
+        "age": 24,
+        "eyeColor": "green",
+        "name": "Contreras Mcmahon",
+        "gender": "male",
+        "company": "GLASSTEP",
+        "email": "contrerasmcmahon@glasstep.com",
+        "phone": "+1 (961) 419-2674",
+        "address": "695 Sackett Street, Drytown, New Hampshire, 6623",
+        "registered": "2018-11-09T11:01:39 +08:00",
+        "latitude": 24.614645,
+        "longitude": 166.542101,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Kennedy Cherry"
+            },
+            {
+                "id": 1,
+                "name": "Burks Haynes"
+            },
+            {
+                "id": 2,
+                "name": "Dionne Gaines"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07a5f5d5a2de7d2eb83",
+        "index": 3,
+        "guid": "c41d5796-ad1a-41dc-9c3e-fb39c13e0ff4",
+        "isActive": false,
+        "balance": "$2,635.91",
+        "picture": "http://placehold.it/32x32",
+        "age": 20,
+        "eyeColor": "brown",
+        "name": "Miranda Huber",
+        "gender": "female",
+        "company": "CEMENTION",
+        "email": "mirandahuber@cemention.com",
+        "phone": "+1 (904) 525-2987",
+        "address": "393 Seabring Street, Munjor, New Mexico, 5789",
+        "registered": "2018-07-01T02:25:01 +07:00",
+        "latitude": 21.974637,
+        "longitude": 179.915366,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Leigh York"
+            },
+            {
+                "id": 1,
+                "name": "Therese Bolton"
+            },
+            {
+                "id": 2,
+                "name": "Lawson Patton"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07ab69ad3f34c8adce8",
+        "index": 4,
+        "guid": "9e79d6c7-a6b9-4011-be3d-915b5004d2c1",
+        "isActive": true,
+        "balance": "$2,906.28",
+        "picture": "http://placehold.it/32x32",
+        "age": 32,
+        "eyeColor": "blue",
+        "name": "Tracie Patterson",
+        "gender": "female",
+        "company": "OVOLO",
+        "email": "traciepatterson@ovolo.com",
+        "phone": "+1 (938) 469-2023",
+        "address": "639 Norman Avenue, Tonopah, North Carolina, 7548",
+        "registered": "2022-06-12T02:54:15 +07:00",
+        "latitude": 50.900366,
+        "longitude": 165.76442,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Doreen Hewitt"
+            },
+            {
+                "id": 1,
+                "name": "Kristin Hughes"
+            },
+            {
+                "id": 2,
+                "name": "Rocha Colon"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07a4b7d7750d389a3bf",
+        "index": 5,
+        "guid": "c545a05e-8f50-4b8f-b31a-713dbff9985f",
+        "isActive": false,
+        "balance": "$2,633.33",
+        "picture": "http://placehold.it/32x32",
+        "age": 22,
+        "eyeColor": "brown",
+        "name": "Tonya Perez",
+        "gender": "female",
+        "company": "HIVEDOM",
+        "email": "tonyaperez@hivedom.com",
+        "phone": "+1 (900) 544-2714",
+        "address": "689 Furman Street, Juarez, Texas, 9039",
+        "registered": "2018-04-02T12:37:24 +07:00",
+        "latitude": 17.617956,
+        "longitude": -97.613537,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Andrews Mcclure"
+            },
+            {
+                "id": 1,
+                "name": "Carver Flynn"
+            },
+            {
+                "id": 2,
+                "name": "Golden Adams"
+            }
+        ]
+    },
+    {
+        "_id": "6424d07add92c805f04313c7",
+        "index": 6,
+        "guid": "588568d4-123e-4a28-8744-9aa9a88a9ee0",
+        "isActive": false,
+        "balance": "$1,887.83",
+        "picture": "http://placehold.it/32x32",
+        "age": 26,
+        "eyeColor": "blue",
+        "name": "Hatfield Harris",
+        "gender": "male",
+        "company": "AUTOGRATE",
+        "email": "hatfieldharris@autograte.com",
+        "phone": "+1 (846) 436-2748",
+        "address": "123 Vista Place, Ripley, Federated States Of Micronesia, 8812",
+        "registered": "2018-09-14T11:31:12 +07:00",
+        "latitude": -63.601003,
+        "longitude": -10.990065,
+        "friends": [
+            {
+                "id": 0,
+                "name": "Keith Long"
+            },
+            {
+                "id": 1,
+                "name": "Jayne Guthrie"
+            },
+            {
+                "id": 2,
+                "name": "Lynn Hines"
+            }
+        ]
+    }
+]

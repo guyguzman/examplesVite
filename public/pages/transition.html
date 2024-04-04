@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Transition</title>
+    <style>
+        body {
+            background-color: blue;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-image: url("https://source.unsplash.com/random/200×200");
+            transition: transform 1s ease-in-out 1s, filter 1s ease-in-out 0s;
+            transform-origin: center center;
+            filter: grayscale(100);
+        }
+
+        .box:hover {
+            background-color: blue;
+            transform: translateY(-30px) scale(1);
+            filter: grayscale(0);
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: red;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

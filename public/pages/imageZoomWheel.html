@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Image Zoom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            background-color: #c0c0c0;
+        }
+
+        .parent {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background-color: black;
+        }
+
+        .child {
+            width: 100%;
+            height: 100%;
+            background-image: url("./img/kidsSkiing.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: transform 500ms ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div id="parent" class="parent">
+            <div id="child" class="child"></div>
+        </div>
+    </div>
+
+    <script>
+        var elementChild;
+        var elementParent;
+        var zoomScale = 1;
+        var rotatedAtLeastOnce = false;
+        var rotationDegrees = 0;
+        var zoomIn = true;
+        var zoomOut = false;
+        var wheelSpeed;
+        var justRotated = false;
+        var rotatedAtLeastOnce = false;
+        var rotatedTimer;
+        var timeLastRotated;
+        var previousKey;
+        var previousKeyCode;
+
+        window.addEventListener("load", function () {
+            elementParent = document.getElementById("parent");
+            elementChild = document.getElementById("child");
+            window.addEventListener("wheel", zoomInOut);
+            window.addEventListener("click", clickReset);
+            window.addEventListener("keydown", keyDown);
+            setInterval(function () {
+                let currentTime = new Date();
+                if (rotatedAtLeastOnce == true) {
+                    let differenceMilliseconds =
+                        currentTime.getTime() - timeLastRotated.getTime();
+                    if (differenceMilliseconds > 3000) justRotated = false;
+                }
+            }, 5000);
+        });
+
+        function keyDown(event) {
+            let text =
+                event.type +
+                " key=" +
+                event.key +
+                " code=" +
+                event.code +
+                (event.shiftKey ? " shiftKey" : "") +
+                (event.ctrlKey ? " ctrlKey" : "") +
+                (event.altKey ? " altKey" : "") +
+                (event.metaKey ? " metaKey" : "") +
+                (event.repeat ? " (repeat)" : "") +
+                "\n";
+
+
+            console.log(text);
+
+
+            let shiftKey = event.shiftKey;
+            let ctrlKey = event.ctrlKey;
+            let altKey = event.altKey;
+            let metaKey = event.metaKey;
+            let repeatKey = event.repeat;
+
+            if (event.key == "x") {
+                clickReset(event);
+            }
+
+            if (event.key == "r") {
+                rotationDegrees = rotationDegrees + 180;
+                if (rotationDegrees == 360) rotationDegrees = 0;
+                let transformString = `scale(${zoomScale}) rotate(${rotationDegrees}deg)`;
+                elementChild.style.transform = transformString;
+            }
+
+            if (event.key == "z") {
+                zoomScale = zoomScale + 0.1;
+                if (zoomScale > 1.5) zoomScale = 1.5;
+                if (zoomScale < 1) zoomScale = 1;
+                let transformString = `scale(${zoomScale}) rotate(${rotationDegrees}deg)`;
+                elementChild.style.transform = transformString;
+            }
+
+            if (event.key == "u") {
+                zoomScale = zoomScale - 0.1;
+                if (zoomScale > 1.5) zoomScale = 1.5;
+                if (zoomScale < 1) zoomScale = 1;
+                let transformString = `scale(${zoomScale}) rotate(${rotationDegrees}deg)`;
+                elementChild.style.transform = transformString;
+            }
+
+            previousKeyCode = event.code;
+            previousKey = event.key;
+        }
+
+        function clickReset(event) {
+            zoomScale = 1;
+            rotationDegrees = 0;
+            justRotated = true;
+            rotatedAtLeastOnce = true;
+            timeLastRotated = new Date();
+            let transformString = `scale(${zoomScale}) rotate(${rotationDegrees}deg)`;
+            elementChild.style.transform = transformString;
+        }
+
+        function zoomInOut(event) {
+            if (event.deltaY < 0) {
+                zoomIn = true;
+                zoomOut = false;
+            } else {
+                zoomIn = false;
+                zoomOut = true;
+            }
+
+            wheelSpeed = Math.abs(event.deltaY);
+
+            if (zoomIn) zoomScale = zoomScale + 0.02;
+            if (zoomOut) zoomScale = zoomScale - 0.02;
+
+            if (zoomScale > 1.5) zoomScale = 1.5;
+            if (zoomScale < 1) zoomScale = 1;
+
+            if (wheelSpeed > 200 && justRotated == false) {
+                rotationDegrees = rotationDegrees + 180;
+                justRotated = true;
+                rotatedAtLeastOnce = true;
+                timeLastRotated = new Date();
+            }
+
+            let transformString = `scale(${zoomScale}) rotate(${rotationDegrees}deg)`;
+            elementChild.style.transform = transformString;
+        }
+    </script>
+</body>
+
+</html>

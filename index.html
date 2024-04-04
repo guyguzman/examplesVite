@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+    // import Prism from 'prismjs';
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <link rel="stylesheet" href="/css/common.css" />
+  <!-- <script src="./js/colorCode.js"></script> -->
+  <!-- <script src="https://unpkg.com/animate-css-grid@latest"></script> -->
+
+
+  <link rel="stylesheet" href="/css/purple.css" />
+
+  <!-- <script src="https://unpkg.com/animate-css-grid@latest"></script> -->
+  <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+  <script defer src="/fontawesome/js/brands.js" type="module"></script>
+  <script defer src="/fontawesome/js/duotone.js" type="module"></script>
+  <script defer src="/fontawesome/js/light.js" type="module"></script>
+  <script defer src="/fontawesome/js/regular.js" type="module"></script>
+  <script defer src="/fontawesome/js/sharp-regular.js" type="module"></script>
+  <script defer src="/fontawesome/js/sharp-solid.js" type="module"></script>
+  <script defer src="/fontawesome/js/solid.js" type="module"></script>
+  <script defer src="/fontawesome/js/thin.js" type="module"></script>
+
+  <!-- Keep the FontAwesome file below. -->
+
+  <script defer src="/fontawesome/js/fontawesome.js" type="module"></script>
+
+  <title>Examples</title>
+  <style>
+    :root {
+      --borderRadius: 5px;
+      --colorTextDark: #000000;
+      --colorTextLight: #ffffff;
+      --colorCard: #ffffff;
+      --colorTitle: #373737;
+      --colorHeaderBackground: hsla(0, 100%, 74%, 1);
+      --colorBackground: hsla(0, 100%, 96%, 1);
+      --colorButtonHover: hsla(0, 100%, 74%, 1);
+      --linkHover: hsl(0, 100%, 50%);
+    }
+
+    @font-face {
+      font-family: "RobotoFlex";
+      src: url("fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "Ubuntu";
+      src: url("fonts/Ubuntu_Condensed/UbuntuCondensed-Regular.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "Cascadia";
+      src: url("fonts/Microsoft/Cascadia.ttf") format("truetype");
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: RobotoFlex;
+    }
+
+    .landingPage {
+      width: var(--fullWidth);
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-items: start;
+      justify-items: center;
+      margin-bottom: 50px;
+      margin-top: 0px;
+      transition: 300ms;
+    }
+
+    .backgroundAttachmentFix {
+      background-image: url("./img/baseball.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(0, 0, 0, .3);
+      background-blend-mode: multiply;
+      width: var(--fullWidth);
+      height: var(--fullHeight);
+      position: fixed;
+      transition: width 250ms ease-in-out, height 250ms ease-in-out;
+      z-index: -1;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      grid-column: 1;
+      grid-row: 1;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      width: clamp(340px, 90%, 500px);
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 60px 1fr;
+      background-color: var(--colorCard);
+      border-radius: var(--borderRadius);
+      box-sizing: border-box;
+      filter: drop-shadow(2px 2px 6px #808080);
+    }
+
+    .cardHeader {
+      width: 100%;
+      height: 100%;
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      grid-template-rows: 1;
+      align-items: center;
+      justify-items: center;
+      border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+      background-color: var(--colorHeaderBackground);
+    }
+
+    .cardIcon {
+      /* width: 80vmax;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; */
+    }
+
+    .cardTitle {
+      width: 100%;
+      height: 100%;
+      font-family: Ubuntu;
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      justify-items: center;
+      color: var(--colorTitle);
+      user-select: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      .cardTitle {
+        font-size: 20px;
+      }
+    }
+
+    .cardMain {
+      grid-column: 1;
+      display: grid;
+      grid-template-columns: 2fr;
+      grid-template-rows: 1fr 60px;
+      padding: 14px;
+    }
+
+    .link {
+      height: 30px;
+      font-family: RobotoFlex;
+      font-weight: 500;
+      font-size: 20px;
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    .description {
+      font-family: RobotoFlex;
+      font-weight: 300;
+      font-size: 18px;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: #404040;
+    }
+
+    .link a:hover {
+      color: var(--colorHeaderBackground);
+    }
+
+    .command {
+      height: 30px;
+      font-weight: 500;
+      font-size: 20px;
+      margin-left: 20px;
+      margin-top: 10px;
+      font-family: Cascadia;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .button {
+      margin-top: 20px;
+      width: 150px;
+      height: 40px;
+      background-color: #f0f0f0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      justify-items: center;
+      font-weight: 500;
+      font-size: 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+      user-select: none;
+      font-family: RobotoFlex;
+    }
+
+    .button:hover {
+      background-color: var(--linkHover);
+    }
+
+    .button a {
+      text-decoration: none;
+      color: #404040;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .displayCode {
+      grid-column: 2;
+      grid-row: 1;
+      height: 90vh;
+      width: 80%;
+      margin-top: 0px;
+      padding: 0px;
+      font-family: Cascadia;
+      font-weight: 500;
+      overflow-x: scroll;
+      overflow-y: scroll;
+      font-size: 18px;
+      scrollbar-color: #ff9d00 #FFDDA6;
+      scrollbar-width: medium;
+    }
+
+    .displayCode::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    .displayCode::-webkit-scrollbar-track {
+      background-color: #FFDDA6;
+    }
+
+    .displayCode::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .displayCode::-webkit-scrollbar-thumb {
+      /* background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%); */
+      background-color: #ff9d00;
+      box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+      border-radius: var(--borderRadius);
+      width: 10px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .command {
+        font-size: 15px;
+      }
+    }
+  </style>
+  <style>
+    .codeSection {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 0px 1fr;
+      align-items: center;
+      justify-items: center;
+
+    }
+
+    .codeTitle {
+      width: 100%;
+      height: 100%;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      justify-items: center;
+      color: #606268;
+      font-size: 30px;
+      font-family: Cascadia;
+    }
+
+    .codeBlock {
+      width: 100%;
+      grid-column: 1/2;
+      grid-row: 2/3;
+      box-sizing: border-box;
+    }
+
+    pre {
+      height: clamp(100px, 100%, 400px);
+      width: clamp(100px, 90%, 1800px);
+
+    }
+
+    pre[class*=language-] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .copy-to-clipboard-button {
+      background-color: rgb(30, 30, 63);
+      border-style: none;
+      color: #a5ff90;
+      width: 60px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+    }
+
+    .toolbar-item {
+      display: inline-block;
+      margin: 0 5px;
+      font-family: Cascadia;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="landingPage" class="landingPage">
+    <!-- <div id="displayCode" class="displayCode" style="margin-top: 40px">
+        </div> -->
+    <div id="cards" class="cards">
+    </div>
+  </div>
+
+  <script type="module">
+
+    import { adjustWidthHeight } from "/js/common.js";
+
+    let elementLandingPage;
+    let elementCode;
+    let elementDisplayCode;
+    let elementCards;
+
+    let hue;
+    let hslBackground;
+    let hslHeader;
+    let hslLink;
+    let hslCode;
+    let examples = [];
+    let isMobile = false;
+    let index = 0;
+    var previousKey;
+    var previousKeyCode;
+
+    window.onload = function () {
+
+      adjustWidthHeight();
+
+      elementLandingPage = document.getElementById("landingPage");
+      elementCards = document.getElementById("cards");
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        elementLandingPage.style.gridTemplateColumns = "100%";
+        isMobile = true;
+      }
+      window.addEventListener("keydown", keyDown);
+      addClickEventCardTitles();
+      displayCards();
+      setSchemeImage()
+    };
+
+    function addClickEventCardTitles() {
+      let titles = document.getElementsByClassName("cardTitle");
+      titles = [...titles]; //move to an array
+      titles.forEach((title) => {
+        title.addEventListener("click", changeColorScheme);
+      });
+    }
+
+    function doNothing(event) {
+      event.stopPropagation();
+    }
+
+    //  <div id="displayCode" class="displayCode" style="margin-top: 40px"></div>
+
+
+    async function displayFormattedCode(filename) {
+
+      console.log("displayFormattedCode: " + filename);
+      //remove the existing displayCode div
+
+      removeExistingDisplayCode()
+
+      //add the new displayCode div
+
+      addNewDisplayCode();
+
+      //insert the html file into the displayCode div
+
+      insertHtmlFileIntoDisplayCode(filename, filename);
+    }
+
+    function removeExistingDisplayCode() {
+      let children = elementLandingPage.children;
+      children = [...children];
+      children.forEach((child, index) => {
+        if (child.id == "displayCode") {
+          elementLandingPage.removeChild(child);
+        }
+      });
+    }
+
+    function keyDown(event) {
+
+      let key = event.key;
+      let code = event.code;
+      let type = event.type;
+      let shiftKey = event.shiftKey;
+      let ctrlKey = event.ctrlKey;
+      let altKey = event.altKey;
+      let metaKey = event.metaKey;
+      let repeatKey = event.repeat;
+
+      if (code == 'Space' || code == 'Escape') {
+        hideCode();
+      }
+
+      previousKeyCode = event.code;
+      previousKey = event.key;
+    }
+
+    function addNewDisplayCode() {
+      elementLandingPage.style.gridTemplateColumns = "50% 50%";
+      elementDisplayCode = document.createElement("div");
+      elementDisplayCode.id = "displayCode";
+      elementDisplayCode.className = "displayCode";
+      elementDisplayCode.addEventListener("click", doNothing);
+      elementDisplayCode.style.display = "block";
+      window.addEventListener("scroll", adjustCodeBlock);
+      elementLandingPage.appendChild(elementDisplayCode);
+      let scroll = window.scrollY + 40;
+      elementDisplayCode.style.marginTop = scroll + "px";
+    }
+
+    function insertHtmlFileIntoDisplayCode(filepath, title) {
+
+      let period = filepath.indexOf(".");
+      let fileExtension = filepath.substring(period + 1, filepath.length);
+      let fileName = filepath.substring(0, period);
+
+      fetch(`./${filepath}`)
+        .then(response => response.text())
+        .then(textString => {
+
+          if (fileExtension == "html") {
+            textString = textString.replace(/&/g, "&amp;");
+            textString = textString.replace(/</g, "&lt;");
+            textString = textString.replace(/>/g, "&gt;");
+          }
+
+          let elementCodeSection = document.createElement("div");
+          let elementCodeTitle = document.createElement("div");
+          let elementCodeBlock = document.createElement("div");
+          let elementPre = document.createElement("pre");
+          let elementCode = document.createElement("code");
+
+          elementCodeTitle.classList.add("codeTitle");
+          elementCodeBlock.classList.add("codeBlock");
+          elementCodeSection.classList.add("codeSection");
+          elementCodeSection.id = fileName;
+
+          elementCode.classList.add(`language-${fileExtension}`);
+          elementCode.innerHTML = textString;
+
+          elementPre.appendChild(elementCode);
+          elementCodeBlock.appendChild(elementPre);
+          elementCodeSection.appendChild(elementCodeBlock);
+          elementDisplayCode.appendChild(elementCodeSection);
+
+          Prism.highlightElement(elementCode);
+        });
+    }
+
+    function adjustCodeBlock() {
+      let scroll = window.scrollY + 40;
+      elementDisplayCode.style.marginTop = scroll + "px";
+    }
+
+    async function showDemoBlock(filename) {
+      elementLandingPage.style.gridTemplateColumns = "55% 45%";
+      elementDisplayCode.style.display = "block";
+      let filepath = "./code/" + filename;
+      let response = await fetch(filepath);
+      let text_data = await response.text();
+    }
+
+    function hideCode() {
+      elementLandingPage.style.gridTemplateColumns = "100%";
+      elementLandingPage.removeChild(elementDisplayCode);
+    }
+
+    function changeColorScheme() {
+      hue = getRandomInt(360);
+      hslBackground = `hsl(${hue},100%, 96%)`;
+      hslHeader = `hsl(${hue},100%, 74%)`;
+      hslLink = `hsl(${hue},100%, 74%)`;
+      hslCode = `hsl(${hue},100%, 85%)`;
+
+      document.documentElement.style.setProperty("--linkHover", hslLink);
+
+      let headers = document.getElementsByClassName("cardHeader");
+      for (let i = 0; i < headers.length; i++) {
+        headers[i].style.backgroundColor = hslHeader;
+      }
+
+      elementLandingPage.style.backgroundColor = hslBackground;
+      document.body.style.backgroundColor = hslBackground;
+      // elementDisplayCode.style.backgroundColor = hslBackground;
+    }
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function fetchFile(filename) {
+      fetch(filename)
+        .then((response) => response.json())
+        .then((json) => {
+          let element = document.getElementById("code");
+          element.innerHTML = json.code;
+        });
+    }
+
+    function removeChildNodes(element) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
+      }
+    }
+
+    async function getTextFile(filename) {
+      fetch(`./snippets/${filename}`)
+        .then(response => response.text())
+        .then(textString => {
+          return textString;
+        });
+    }
+
+    function addCard(example) {
+      let card = document.createElement("div");
+      let cardHeader = document.createElement("div");
+      let cardIcon = document.createElement("div");
+      let cardTitle = document.createElement("div");
+      let cardMain = document.createElement("div");
+      let cardDescription = document.createElement("div");
+      let cardButtons = document.createElement("div");
+      let cardButtonDemo = document.createElement("div");
+      let cardButtonCode = document.createElement("div");
+      let cardButtonLive = document.createElement("div");
+
+      card.classList.add("card");
+      cardHeader.classList.add("cardHeader");
+      cardIcon.classList.add("cardIcon");
+      cardTitle.classList.add("cardTitle");
+      cardMain.classList.add("cardMain");
+      cardDescription.classList.add("description");
+      cardButtons.classList.add("buttons");
+      cardButtonDemo.classList.add("button");
+      cardButtonCode.classList.add("button");
+
+      cardTitle.innerText = example.title;
+      //cardTitle.addEventListener("click", (event) => { event.stopPropagation(); changeColorScheme(); });
+      cardDescription.innerText = example.description;
+      console.log(example.filename);
+      cardButtonDemo.innerHTML = `<a target="_blank" href="pages/${example.filename}">Live</a target="_blank">`;
+
+      if (!isMobile) {
+        cardButtonCode.innerText = "Code";
+        cardButtonCode.addEventListener("click", (event) => {
+          displayFormattedCode(example.filename);
+        });
+      }
+
+      cardHeader.appendChild(cardIcon);
+      cardHeader.appendChild(cardTitle);
+      card.appendChild(cardHeader);
+      cardButtons.appendChild(cardButtonDemo);
+
+      if (!isMobile) cardButtons.appendChild(cardButtonCode);
+
+      cardMain.appendChild(cardDescription);
+      cardMain.appendChild(cardButtons);
+      card.appendChild(cardMain);
+
+      elementCards.appendChild(card);
+
+      // <div class="button" onclick="showCode('scrollingProgressBar.html')">Code</div>
+    }
+
+    function displayCards() {
+      examples = [];
+      index = 0;
+      examples[index++] = {
+        filename: "snapping.html",
+        title: "Scroll Snapping",
+        description:
+          "A CSS feature that forces a client element to snap to the parent element during scrolling.",
+      };
+      examples[index++] = {
+        filename: "svgAnimation.html",
+        title: "Signature Animation",
+        description:
+          "Animating a signature using SVG.",
+      };
+      examples[index++] = {
+        filename: "scrollingProgressBar.html",
+        title: "Scroll Progress",
+        description:
+          "Display a progress bar showing the percent of scrolling.",
+      };
+      examples[index++] = {
+        filename: "animation.html",
+        title: "Animation",
+        description: "A short example of animations.",
+      };
+      examples[index++] = {
+        filename: "flex.html",
+        title: "Flex Example",
+        description: "Showing different properties of Flex.",
+      };
+      examples[index++] = {
+        filename: "grid.html",
+        title: "Grid Example",
+        description: "Showing different properties of Grid.",
+      };
+      examples[index++] = {
+        filename: "public/fontawesome.html",
+        title: "Font Awesome",
+        description: "Using Font Awesome.",
+      };
+      examples[index++] = {
+        filename: "bitcoin.html",
+        title: "Bitcoin API",
+        description: "Real-time updating of Bitcoin price using an API.",
+      };
+      examples[index++] = {
+        filename: "windowSize.html",
+        title: "Viewport Size",
+        description: "Size of the current viewport and other information.",
+      };
+      examples[index++] = {
+        filename: "svgMaskStacked.html",
+        title: "SVG Mask Stacked Images",
+        description:
+          "Using an SVG mask to punch a hole in the top image to reveal the bottom image.",
+      };
+      examples[index++] = {
+        filename: "svgMaskStackedXtra.html",
+        title: "SVG Mask Stacked Images (Xtra)",
+        description:
+          "Using an SVG mask to punch a hole in the top image to reveal the bottom image. This XTRA version has extra code to select different masks.",
+      };
+      examples[index++] = {
+        filename: "displaySVG.html",
+        title: "Display SVG in HTML",
+        description:
+          "Displaying an SVG image in an HTML page.",
+      };
+      examples[index++] = {
+        filename: "displayImagesAndSVG.html",
+        title: "Display Images and SVG",
+        description:
+          "Displaying and sizing SVG and Images.",
+      };
+      examples[index++] = {
+        filename: "video.html",
+        title: "Video Demonstration",
+        description:
+          "Full-screen video darkened and lightened using Javascript.",
+      };
+      examples[index++] = {
+        filename: "nestedGrids.html",
+        title: "Nested Grids",
+        description:
+          "Full-screen demo of nested grids.",
+      };
+      examples[index++] = {
+        filename: "clippingPathCSS.html",
+        title: "CSS Clip Path Examples",
+        description:
+          "Using the clipPath property to create a clipping path on an image.",
+      };
+      examples[index++] = {
+        filename: "fetch.html",
+        title: "Javascript Fetch",
+        description:
+          "Using fetch() to open a file and display the contents and get an API response.",
+      };
+      examples[index++] = {
+        filename: "fixedBackground.html",
+        title: "Fixed Background",
+        description:
+          "Using an image as a fixed background as words scroll over it.",
+      };
+      examples[index++] = {
+        filename: "imageZoomWheel.html",
+        title: "Zoom & Rotate Image",
+        description:
+          "Zoom image in/out with the mouse wheel. Can also use keys 'R' to rotate, 'Z' to zoom, 'U' to unzoom.",
+      };
+      examples[index++] = {
+        filename: "changeCursor.html",
+        title: "Custom Cursor",
+        description: "Use an tomato-colored ball to track the mouse.",
+      };
+      examples[index++] = {
+        filename: "eventPropagation.html",
+        title: "Event Propagation",
+        description: "An example of bubbling in event propagation and the stopPropagation() method.",
+      };
+      examples[index++] = {
+        filename: "coolGrays.html",
+        title: "Cool Grays",
+        description: "A collection of cool gray colors.",
+      };
+
+      examples[index++] = {
+        filename: "greensockSquares.html",
+        title: "GreenSock",
+        description: "GreenSock Animations - Squares.",
+      };
+
+      examples[index++] = {
+        filename: "splineDesign.html",
+        title: "Spline Design",
+        description: "Spline Design 3D.",
+      };
+
+      examples[index++] = {
+        filename: "splineDmr.html",
+        title: "Spline iPhone",
+        description: "iPhone Website Video.",
+      };
+
+      examples[index++] = {
+        filename: "copyClipboard.html",
+        title: "Copy to Clipboard",
+        description: "Copy from element to clipboard.",
+      };
+
+      examples[index++] = {
+        filename: "template.html",
+        title: "Template",
+        description: "HTML Template.",
+      };
+
+      examples[index++] = {
+        filename: "index.html",
+        title: "This Page",
+        description: "The code for this page.",
+      };
+
+      examples.forEach((example) => {
+        addCard(example);
+      });
+    }
+
+
+  </script>
+  <script>
+
+    function setFixedBackground() {
+      let className = "backgroundAttachmentFix";
+      let elementDiv = document.createElement("div");
+      elementDiv.className = className;
+      document.body.prepend(elementDiv);
+
+    }
+    function setSchemeImage() {
+      let hue;
+      let hslBackground;
+      let hslHeader;
+      let hslCard;
+      let hslLink;
+      setFixedBackground();
+      hslHeader = "#b0b2b4";
+      hslCard = "rgba(255,255,255,.8)";
+      hslLink = "#a0a0a0";
+
+      let elementBackground = document.getElementById("landingPage");
+      let elementFlexBox = document.getElementById("cards");
+
+      console.log("In setSchemeImage()");
+
+      document.documentElement.style
+        .setProperty('--linkHover', hslLink);
+
+      elementFlexBox.style.gap = "40px";
+      elementFlexBox.style.marginTop = "40px";
+
+      let headers = document.getElementsByClassName("cardHeader");
+      for (let i = 0; i < headers.length; i++) {
+        headers[i].style.backgroundColor = hslHeader;
+      };
+
+      let cards = document.getElementsByClassName("card");
+      for (let i = 0; i < cards.length; i++) {
+        cards[i].style.backgroundColor = hslCard;
+        cards[i].style.backdropFilter = "blur(10px)";
+      };
+
+      elementBackground.style.backgroundColor = hslBackground;
+      document.body.style.backgroundColor = hslBackground;
+    }
+
+
+  </script>
+  <script src="js/prism.js" type="module"></script>
+</body>
+
+</html>

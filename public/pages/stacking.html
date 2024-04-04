@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stacking</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --fadetime: 500ms;
+        }
+
+        body {
+            font-family: "Roboto Flex";
+        }
+
+        .fullscreen {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            font-weight: 500;
+            font-size: 20vh;
+            color: black;
+            opacity: 1;
+        }
+
+        .fadeIn {
+            opacity: 1;
+            transition-property: opacity;
+            transition-timing-function: ease-in-out;
+            /* transition-duration: var(--fadetime); */
+        }
+
+        .fadeOut {
+            opacity: 0;
+            transition-property: opacity;
+            transition-timing-function: ease-in-out;
+            /* transition-duration: var(--fadetime); */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page1" class="fullscreen" style="background-color: salmon; z-index: 100" onclick="clickNextPage(1)">
+        1
+    </div>
+    <div id="page2" class="fullscreen" style="background-color: limegreen; z-index: 90" onclick="clickNextPage(2)">
+        2
+    </div>
+    <div id="page3" class="fullscreen" style="background-color: dodgerblue; z-index: 80" onclick="clickNextPage(3)">
+        3
+    </div>
+    <div id="page4" class="fullscreen" style="background-color: greenyellow; z-index: 70" onclick="clickNextPage(4)">
+        4
+    </div>
+    <div id="page5" class="fullscreen" style="background-color: hotpink; z-index: 60" onclick="clickNextPage(5)">
+        5
+    </div>
+    <div id="page6" class="fullscreen" style="background-color: yellow; z-index: 50" onclick="clickNextPage(6)">
+        6
+    </div>
+</body>
+<script>
+    maximumPage = 6;
+    currentPage = 1;
+    nextPage = 1;
+    delayMs = 1000;
+
+    window.onload = function () { };
+
+    function clickNextPage(pageNumber) {
+        currentPage = pageNumber;
+        nextPage = currentPage + 1;
+
+        if (nextPage > maximumPage) nextPage = 1;
+
+        setFadeOut(currentPage);
+        setFadeIn(nextPage);
+
+        setTimeout(reorderPages, delayMs, nextPage);
+    }
+
+    function reorderPages(pageNumber) {
+        var zindex = 1000;
+
+        for (page = 1; page <= maximumPage; page++) {
+            actualPage = pageNumber + page - 1;
+            if (actualPage > maximumPage) {
+                actualPage = page - (maximumPage - pageNumber) - 1;
+            }
+            zindex = 100 - page;
+            pageName = "page" + actualPage;
+            const pageElement = document.getElementById(pageName);
+            pageElement.style.zIndex = zindex;
+        }
+    }
+
+    function setFadeOut(pageNumber) {
+        const pageElement = document.getElementById("page" + pageNumber);
+        pageElement.classList.remove("fadeIn");
+        pageElement.classList.add("fadeOut");
+        pageElement.style.transitionDuration = delayMs + "ms";
+    }
+
+    function setFadeIn(pageNumber) {
+        const pageElement = document.getElementById("page" + pageNumber);
+        pageElement.classList.remove("fadeOut");
+        pageElement.classList.add("fadeIn");
+        pageElement.style.transitionDuration = delayMs + "ms";
+    }
+</script>
+
+</html>

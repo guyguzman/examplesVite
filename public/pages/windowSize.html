@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Flex' rel='stylesheet'>
+
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format('truetype');
+            font-weight: 100 1000;
+        }
+
+        @font-face {
+            font-family: 'RobotoMono';
+            src: url('fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('truetype');
+        }
+
+        body {
+            background-color: #c0c0c0;
+            font-family: 'RobotoMono';
+            font-size: 24px;
+            color: black;
+            overflow-x: hidden;
+            margin: 0px;
+            padding: 0px;
+            /* font-optical-sizing: auto; */
+            /* font-variation-settings: "wght" 500, "opsz" 144; */
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            width: calc(var(--vw, 1vw) * 100);
+            height: calc(var(--vh, 1vh) * 100);
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            border-style: none;
+            border-width: 20px;
+            border-color: lawngreen;
+            ;
+        }
+
+        .fullWidth {
+            width: calc(var(--vw, 1vw) * 100);
+        }
+
+        .fullHeight {
+            height: calc(var(--vh, 1vh) * 100);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" onclick="resetWidthHeight()">
+        <div id="Info"></div>
+    </div>
+
+    <div class="fullWidth fullHeight" style="background-color:orange;"></div>
+
+    <script type="module">
+
+        import { adjustWidthHeight } from "public/js/common.js";
+
+        window.onload = function () {
+
+            adjustWidthHeight();
+
+        });
+        };
+
+        function resetWidthHeight() {
+            let windowInnerWidth = window.innerWidth;
+            let windowInnerHeight = window.innerHeight;
+            let elementClientWidth = document.documentElement.clientWidth;
+            let elementClientHeight = document.documentElement.clientHeight;
+            let elementOffsetWidth = document.documentElement.offsetWidth;
+            let elementOffsetHeight = document.documentElement.offsetHeight;
+            let pageBreak = "</br>";
+            let elementInfo = document.getElementById("Info");
+
+            let vh = windowInnerHeight * 0.01;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+            let vw = elementClientWidth * 0.01;
+            document.documentElement.style.setProperty("--vw", `${vw}px`);
+
+            let message = "windowInnerWidth....." + windowInnerWidth + pageBreak + "elementClientWidth..." + elementClientWidth + pageBreak + "elementOffsetWidth..." + elementOffsetWidth + pageBreak;
+            message += pageBreak + "windowInnerHeight...." + windowInnerHeight + pageBreak + "elementClientHeight.." + elementClientHeight + pageBreak + "elementOffsetHeight.." + elementOffsetHeight + pageBreak;
+            elementInfo.innerHTML = message;
+            console.log(vw, vh);
+
+        }
+    </script>
+</body>
+
+</html>

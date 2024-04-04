@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        :root {
+            --fullHeight: calc(var(--vh, 1vh) * 100);
+            --fullWidth: calc(var(--vw, 1vw) * 100);
+            --rows: 10;
+            --columns: 10;
+            --flexSquares: 100;
+        }
+
+        @font-face {
+            font-family: 'HelveticaBlack';
+            src: url('./fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: HelveticaBlack;
+        }
+
+        .grid {
+            display: grid;
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            width: calc(var(--fullWidth) - 1px);
+            height: calc(var(--fullHeight) - 1px);
+            background-color: #f0f0f0;
+            grid-template-columns: repeat(var(--divisions), calc(100% / var(--divisions)));
+            grid-template-rows: repeat(var(--divisions), calc(100% / var(--divisions)));
+            grid-template-columns: repeat(var(--rows), 1fr);
+            grid-template-rows: repeat(var(--rows), 1fr);
+            grid-gap: 1px;
+            align-items: center;
+            justify-items: center;
+            box-sizing: border-box;
+            transition: all ease-in-out 250ms;
+            ;
+        }
+
+        .flex {
+            display: flex;
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            /* width: calc(var(--fullWidth) - 1px);
+            height: calc(var(--fullHeight) - 1px); */
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+            transition: all ease-in-out 250ms;
+        }
+
+        .gridSquare {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: #808080;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            transition: 500ms;
+        }
+
+        .square {
+            background-color: #C00000;
+            width: 100px;
+            height: 100px;
+            transition: all ease-in-out 250ms;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="flex" class="flex">
+    </div>
+
+    <script>
+        let elementGrid;
+        let elementFlex;
+        let root;
+        let rootCs;
+        let rows;
+        let columns;
+        let vw;
+        let vh;
+        let vwPure;
+        let vhPure;
+        let childCount = 0;
+
+        window.onload = function () {
+
+            elementFlex = document.getElementById("flex");
+            root = document.querySelector(':root');
+
+            adjustWidthHeight();
+            window.addEventListener("resize", () => {
+                adjustWidthHeight();
+            });
+
+            rootCs = getComputedStyle(root);
+            rows = rootCs.getPropertyValue("--rows");
+            columns = rootCs.getPropertyValue("--columns");
+            vw = rootCs.getPropertyValue("--vw");
+            vh = rootCs.getPropertyValue("--vh");
+            vwPure = rootCs.getPropertyValue("--vwPure");
+            vhPure = rootCs.getPropertyValue("--vhPure");
+
+            addFlexSquares(30, elementFlex, true);
+            adjustFlex();
+        };
+
+        function adjustFlex() {
+            let seconds = 3000;
+            let increment = 3000;
+            let incrementSmall = 1000;
+            let start = 0;
+
+            setTimeout(() => {
+                elementFlex.style.alignContent = "flex-start";
+            }, seconds += 2 * increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignContent = "center";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignContent = "flex-end";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignContent = "center";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.width = "50vw"
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.height = "50vh"
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.height = 100 * vhPure + "px";
+                elementFlex.style.width = 100 * vwPure + "px";
+            }, seconds += increment);
+
+
+            setTimeout(() => {
+                elementFlex.style.justifyContent = "start";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.justifyContent = "center";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.justifyContent = "end";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.justifyContent = "center";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                removeAllChildNodes(elementFlex);
+            }, seconds += increment);
+
+            setTimeout(() => {
+                addFlexSquares(30, elementFlex, false);
+            }, seconds += incrementSmall);
+
+            setTimeout(() => {
+                elementFlex.style.alignItems = "flex-start";
+            }, seconds += 2 * increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignItems = "center";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignItems = "flex-end";
+            }, seconds += increment);
+
+            setTimeout(() => {
+                elementFlex.style.alignItems = "center";
+            }, seconds += increment);
+
+
+            setTimeout(() => {
+                removeAllChildNodes(elementFlex);
+            }, seconds += increment);
+
+            setTimeout(() => {
+                addFlexSquares(30, elementFlex, true);
+            }, seconds += incrementSmall);
+
+
+        }
+
+        function removeAllChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+                console.log("removed")
+            }
+        }
+
+        function wait(milliseconds) {
+            return new Promise(resolve => {
+                setTimeout(resolve, milliseconds);
+            });
+        }
+
+        async function addFlexSquares(elements, element, isHeightFixed) {
+            for (index = 1; index <= elements; index++) {
+                let waitTime = 200 - 100 * (index / elements);
+
+                await wait(waitTime);
+                let square = document.createElement("div");
+                let text = document.createElement("div");
+                let height;
+
+                if (!isHeightFixed) {
+                    height = Math.max(50 + 150 * Math.random(), 50);
+                } else {
+                    height = 100;
+                }
+                let width = 100;
+                text.innerText = index;
+                square.classList.add("square");
+                square.style.width = width + "px";
+                square.style.height = height + "px";
+                square.appendChild(text);
+                element.appendChild(square);
+            }
+        }
+
+        function isEven(n) {
+            return n % 2 == 0;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function delay(time) {
+            return new Promise(resolve => setTimeout(resolve, time));
+        }
+
+        function adjustWidthHeight() {
+            let windowInnerWidth = window.innerWidth;
+            let windowInnerHeight = window.innerHeight;
+            let elementClientWidth = document.documentElement.clientWidth;
+            let elementClientHeight = document.documentElement.clientHeight;
+            let elementOffsetWidth = document.documentElement.offsetWidth;
+            let elementOffsetHeight = document.documentElement.offsetHeight;
+
+            let vh = windowInnerHeight * 0.01;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+            let vw = elementClientWidth * 0.01;
+            document.documentElement.style.setProperty("--vw", `${vw}px`);
+            let vhPure = windowInnerHeight * 0.01;
+            document.documentElement.style.setProperty("--vhPure", `${vh}`);
+            let vwPure = elementClientWidth * 0.01;
+            document.documentElement.style.setProperty("--vwPure", `${vw}`);
+        }
+    </script>
+</body>
+
+</html>

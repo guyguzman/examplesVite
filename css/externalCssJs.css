@@ -1,0 +1,31 @@
+:root {
+    --primaryColor: #b7001e;
+}
+
+@font-face {
+    font-family: "HelveticaBlack";
+    src: url("../fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf") format("opentype");
+}
+
+body {
+    margin: 0;
+    background-image: url("../img/canoe.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: var(--fullWidth);
+    height: var(--fullHeight);
+    background-color: rgba(0, 0, 0, .7);
+    background-blend-mode: multiply;
+}
+
+.containerText {
+    width: var(--fullWidth);
+    height: var(--fullHeight);
+    color: var(--primaryColor);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 100px;
+    font-family: "HelveticaBlack";
+}

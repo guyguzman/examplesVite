@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Scrolling Progress</title>
+    <style>
+        :root {
+            --fullHeight: calc(var(--vh, 1vh) * 100);
+            --fullWidth: calc(var(--vw, 1vw) * 100);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: "HelveticaBlack";
+            src: url("fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "RobotoFlex";
+            src: url("fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+        }
+
+        .container {
+            width: var(--fullWidth);
+        }
+
+        .fullScreenColor {
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            background-color: #c0c0c0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 2fr;
+            align-items: center;
+            justify-items: center;
+            font-family: HelveticaBlack;
+            font-size: 50px;
+            color: black;
+        }
+
+        .progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: #404040;
+            display: none;
+        }
+
+        .colorBar {
+            background-color: red;
+            height: 100%;
+            width: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progressBar" class="progressBar">
+        <div id="colorBar" class="colorBar"></div>
+    </div>
+
+    <div id="container" class="container">
+        <div class="fullScreenColor" style="background-color: yellow">
+            1
+        </div>
+
+        <div class="fullScreenColor" style="background-color: dodgerblue">
+            2
+        </div>
+
+        <div class="fullScreenColor" style="background-color: lawngreen">
+            3
+        </div>
+    </div>
+
+    <script type="module">
+        import { adjustWidthHeight } from "public/js/common.js";
+
+        let elementContainer;
+        let boundingContainer;
+        let viewportHeight;
+        let containerHeight;
+        let elementColorBar;
+        let elementProgressBar;
+
+        window.onload = function () {
+            adjustWidthHeight();
+            window.addEventListener("scroll", showScroll);
+            elementContainer = document.getElementById("container");
+            elementColorBar = document.getElementById("colorBar");
+            elementProgressBar = document.getElementById("progressBar");
+            boundingContainer = elementContainer.getBoundingClientRect();
+            containerHeight = boundingContainer.height;
+            viewportHeight = window.innerHeight;
+            console.log("Container Height " + containerHeight);
+            console.log("Viewport Height " + viewportHeight);
+        };
+
+        function showScroll(event) {
+            let scrollY = window.scrollY;
+            let factor = containerHeight / (containerHeight - viewportHeight);
+            console.log("Factor " + factor);
+            let percentage = (100 * (scrollY * factor)) / containerHeight;
+            console.log(percentage);
+            elementColorBar.style.width = percentage + "%";
+            if (percentage > 0) elementProgressBar.style.display = "block";
+            else elementProgressBar.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

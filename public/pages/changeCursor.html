@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/duotone.js"></script>
+    <script defer src="fontawesome/js/brands.js"></script>
+    <script defer src="fontawesome/js/light.js"></script>
+    <script defer src="fontawesome/js/regular.js"></script>
+    <script defer src="fontawesome/js/sharp-regular.js"></script>
+    <script defer src="fontawesome/js/sharp-solid.js"></script>
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="fontawesome/js/fontawesome.js"></script>
+    <title>Template</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/common.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: "HelveticaBlack";
+            src: url("fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "Monseratt";
+            src: url("fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "RobotoFlex";
+            src: url("fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+        }
+
+        .landingPage {
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            background-color: #202020;
+            font-family: "Monseratt";
+            font-size: 80px;
+            color: #202020;
+            /* cursor: default; */
+            position: relative;
+        }
+
+        .orange {
+            width: 50px;
+            height: 50px;
+            background-color: #eb5939;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="landingPage"></div>
+    <div id="orange" class="orange"></div>
+    <script>
+        let elementOrange;
+        let middleX = window.innerWidth / 2;
+        window.onload = function () {
+            elementOrange = document.getElementById("orange");
+            document.addEventListener("mousemove", displayOrangeBall);
+        };
+
+        function displayOrangeBall(e) {
+            if (e.clientX > (middleX - 200) && e.clientX < (middleX + 200)) {
+                moveOrangeBall(e.clientX, e.clientY, 400);
+            } else {
+                moveOrangeBall(e.clientX, e.clientY, 50);
+            }
+        }
+
+        function moveOrangeBall(x, y, diameter) {
+            elementOrange.style.width = diameter / 2 + "px";
+            elementOrange.style.height = diameter / 2 + "px";
+            elementOrange.style.top = y - diameter / 2 + "px";
+            elementOrange.style.left = x - diameter / 2 + "px";
+        }
+
+        function moveOrangeBall(x, y, diameter) {
+            let width = diameter;
+            let height = diameter;
+            let xValue = x - diameter / 2;
+            let yValue = y - diameter / 2;
+            elementOrange.style.width = width + "px";
+            elementOrange.style.height = height + "px";
+            elementOrange.style.top = yValue + "px";
+            elementOrange.style.left = xValue + "px";
+        }
+    </script>
+
+</body>
+
+</html>
