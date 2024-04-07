@@ -9,10 +9,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:wght@500&display=swap"
+    rel="stylesheet"> -->
 
   <link rel="stylesheet" href="/css/common.css" />
-  <!-- <script src="./js/colorCode.js"></script> -->
+  <!-- <script src="/js/colorCode.js"></script> -->
   <!-- <script src="https://unpkg.com/animate-css-grid@latest"></script> -->
 
 
@@ -50,7 +54,9 @@
 
     @font-face {
       font-family: "RobotoFlex";
-      src: url("fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+      /* src: url('fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype"); */
+      src: url('fonts/Roboto_Flex/RobotoFlex-VariableFont.ttf') format("truetype");
+      /* src: url(fonts/RobotoFlex.ttf) format("truetype"); */
     }
 
     @font-face {
@@ -60,13 +66,13 @@
 
     @font-face {
       font-family: "Cascadia";
-      src: url("fonts/Microsoft/Cascadia.ttf") format("truetype");
+      src: url('fonts/Microsoft/Cascadia.ttf') format("truetype");
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: RobotoFlex;
+      font-family: "RobotoFlex";
     }
 
     .landingPage {
@@ -82,7 +88,7 @@
     }
 
     .backgroundAttachmentFix {
-      background-image: url("./img/baseball.jpg");
+      background-image: url("/img/baseball.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -600,15 +606,13 @@
       cardButtonCode.classList.add("button");
 
       cardTitle.innerText = example.title;
-      //cardTitle.addEventListener("click", (event) => { event.stopPropagation(); changeColorScheme(); });
       cardDescription.innerText = example.description;
-      console.log(example.filename);
       cardButtonDemo.innerHTML = `<a target="_blank" href="pages/${example.filename}">Live</a target="_blank">`;
 
       if (!isMobile) {
         cardButtonCode.innerText = "Code";
         cardButtonCode.addEventListener("click", (event) => {
-          displayFormattedCode(example.filename);
+          displayFormattedCode(`pages/${example.filename}`);
         });
       }
 
@@ -638,6 +642,12 @@
           "A CSS feature that forces a client element to snap to the parent element during scrolling.",
       };
       examples[index++] = {
+        filename: "blurSvg.html",
+        title: "Blur SVG Background",
+        description:
+          "How to blur the background of an SVG and obtain the frosted glass effect.",
+      };
+      examples[index++] = {
         filename: "svgAnimation.html",
         title: "Signature Animation",
         description:
@@ -665,7 +675,7 @@
         description: "Showing different properties of Grid.",
       };
       examples[index++] = {
-        filename: "public/fontawesome.html",
+        filename: "fontAwesomeExample.html",
         title: "Font Awesome",
         description: "Using Font Awesome.",
       };

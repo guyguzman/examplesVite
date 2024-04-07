@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/duotone.js"></script>
+    <script defer src="fontawesome/js/brands.js"></script>
+    <script defer src="fontawesome/js/light.js"></script>
+    <script defer src="fontawesome/js/regular.js"></script>
+    <script defer src="fontawesome/js/sharp-regular.js"></script>
+    <script defer src="fontawesome/js/sharp-solid.js"></script>
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="fontawesome/js/fontawesome.js"></script>
+    <title>SVG Clipping</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/common.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        @font-face {
+            font-family: 'HelveticaBlack';
+            src: url('/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: 'Monseratt';
+            src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+        }
+
+        .landingPage {
+            width: var(--fullWidth);
+            /* height: var(--fullHeight); */
+            background-color: black;
+            background-image: url("img/road.jpg");
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-content: center;
+            justify-content: center;
+            font-family: 'Monseratt';
+            font-size: 80px;
+            color: #606060;
+            background-color: rgba(0, 0, 0, 1);
+            background-blend-mode: multiply;
+        }
+
+        .example {
+            width: clamp(360px, 15vw, 400px);
+            height: clamp(360px, 15vw, 400px);
+            /* background-image: url("./img/virginiaBeachPurpleBlue.jpg");
+            background-size: cover; */
+        }
+
+        .image {
+            background-image: url("./img/tulips.jpg");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landingPage">
+        <div class="example">
+            <style>
+                .circle {
+                    -webkit-mask-image: url("svg/circle.svg");
+                    -webkit-mask-size: 100%;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-image: url("svg/circle.svg");
+                    mask-size: 100%;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+            </style>
+            <div class="example circle image">
+            </div>
+        </div>
+        <div class="example">
+            <style>
+                .sun {
+                    -webkit-mask-image: url("./svg/sun.svg");
+                    -webkit-mask-size: 100%;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-image: url("./svg/sun.svg");
+                    mask-size: 100%;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+            </style>
+            <div class="example sun image">
+            </div>
+        </div>
+        <div class="example">
+            <style>
+                .apple {
+                    -webkit-mask-image: url("./svg/apple.svg");
+                    -webkit-mask-size: 80%;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-image: url("./svg/apple.svg");
+                    mask-size: 80%;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+            </style>
+            <div class="example apple image">
+            </div>
+        </div>
+        <div class="example">
+            <style>
+                .cokeCola {
+                    -webkit-mask-image: url("./svg/cocaCola4.svg");
+                    -webkit-mask-size: 100%;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-image: url("./svg/cocaCola4.svg");
+                    mask-size: 100%;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+            </style>
+            <div class="example cokeCola image">
+            </div>
+        </div>
+        <div class="example">
+            <style>
+                .twitter {
+                    -webkit-mask-image: url("./svg/twitter.svg");
+                    -webkit-mask-size: 100%;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-image: url("./svg/twitter.svg");
+                    mask-size: 100%;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+            </style>
+            <div class="example twitter image">
+            </div>
+        </div>
+    </div>
+    <script>
+        let imageCount = -1;
+        let totalImages = 3;
+        window.onload = function () {
+            // let elementPath = document.getElementById("path");
+            // let elementYellowBox = document.getElementById("yellow");
+            // let bboxGroup = elementPath.getBBox();
+            // console.log(bboxGroup);
+            changeImage();
+            interval = setInterval(changeImage, 3000);
+        }
+
+        function changeImage() {
+            imageCount += 1;
+
+            let images = document.querySelectorAll(".image")
+            console.log(images);
+            if (imageCount % totalImages == 0) {
+                imageFilename = "tulips.jpg";
+            }
+            if (imageCount % totalImages == 1) {
+                imageFilename = "apple.jpg";
+            }
+            if (imageCount % totalImages == 2) {
+                imageFilename = "surfer.jpg";
+            }
+            let url = `url("./img/${imageFilename}")`;
+            console.log(url); for (let i = 0; i < images.length; i++) {
+                const element = images[i];
+
+                element.style.backgroundImage = url;
+            }
+        }
+    </script>
+</body>
+
+</html>

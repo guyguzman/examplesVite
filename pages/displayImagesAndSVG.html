@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="/js/common.js" type="module"></script>
+    <link rel="stylesheet" href="/css/common.css" />
+    <!-- <link rel="stylesheet" href="css/imageSizeSlide.css" /> -->
+
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="/fontawesome/js/brands.js"></script>
+    <script defer src="/fontawesome/js/duotone.js"></script>
+    <script defer src="/fontawesome/js/light.js"></script>
+    <script defer src="/fontawesome/js/regular.js"></script>
+    <script defer src="/fontawesome/js/sharp-regular.js"></script>
+    <script defer src="/fontawesome/js/sharp-solid.js"></script>
+    <script defer src="/fontawesome/js/solid.js"></script>
+    <script defer src="/fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="/fontawesome/js/fontawesome.js"></script>
+
+
+    <title>SVG and Image</title>
+    <style>
+        :root {
+            --fullHeight: calc(var(--vh, 1vh) * 100);
+            --fullWidth: calc(var(--vw, 1vw) * 100);
+            --themeColor: #00A2FF;
+            --controlBackground: #e0e2e5;
+            --controlRadioBackground: #c0c0c0;
+            --controlSliderBackground: #c0c0c0;
+            --sliderThumbColor: #00A2FF;
+            --sliderTrackColor: #006BA8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: 'RobotoMono';
+            src: url("/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: Cascadia;
+            src: url("/fonts/Microsoft/Cascadia.ttf") format("truetype");
+        }
+
+        .landingPage {
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            background-color: #c0c0c0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            font-family: Montserrat;
+            font-size: 50px;
+            color: #808080;
+            box-sizing: border-box;
+        }
+
+
+        .imageSection {
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 1;
+            background-color: #f0f0f0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 150px 1fr;
+            align-items: center;
+            justify-items: center;
+            font-family: Montserrat;
+            font-size: 50px;
+            color: #808080;
+            box-sizing: border-box;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #c0c0c0;
+        }
+
+
+        .controls {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            background-color: #e0e0e0;
+        }
+
+        .controlRadios {
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 1;
+            background-color: #e0e0e0;
+            display: flex;
+            font-family: Montserrat;
+            font-size: 50px;
+            color: #404040;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .controlSliders {
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            width: auto;
+            height: 40px;
+            background-color: #cccccc;
+            font-size: 16px;
+        }
+
+        .controlItem {
+            width: auto;
+            height: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            font-size: 16px;
+            background-color: #cccccc;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .controlItem:hover {
+            background-color: #a0a0a0;
+            color: #000000;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 2;
+            background-color: #f0f0f0;
+            display: flex;
+            font-family: Montserrat;
+            font-size: 50px;
+            color: #808080;
+            box-sizing: border-box;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-sizing: border-box;
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--themeColor);
+        }
+
+        .slider {
+            width: 300px;
+            display: grid;
+        }
+    </style>
+    <style>
+        .radioLabel {
+            font-size: 14px;
+        }
+
+        .radioButtonSection {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .radioButtonGroupTitle {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            color: #606266;
+            font-family: Cascadia;
+        }
+
+        .radioButtonGroup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #cccccc;
+            height: 40px;
+            padding: 0 20px 0 16px;
+            font-family: Cascadia;
+            color: #060c3b;
+            font-weight: 500;
+        }
+
+        .radioButtonGroup>input[type="radio"] {
+            appearance: none;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            padding: 0px;
+            background-clip: content-box;
+            border: 2px solid #606060;
+            border-radius: 25%;
+            margin-right: 0;
+
+        }
+
+        .radioButtonGroup>input[type="radio"]:checked {
+            background-color: var(--themeColor);
+            border: 2px solid var(--themeColor);
+        }
+
+        .radioButtonGroup {}
+
+        .radioButtonGroup>label {
+            font-size: 14px;
+            margin-top: 4px;
+            text-transform: uppercase;
+            color: #404246;
+        }
+
+        .radioButtonGroup>input[type='radio']:hover {}
+
+        .radioButtonGroup>input[type='radio']:focus {}
+    </style>
+
+    <style>
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 15rem;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: var(--sliderTrackColor);
+            border-radius: 0.5rem;
+            height: 0.5rem;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -12px;
+            background-color: var(--sliderThumbColor);
+            height: 2rem;
+            width: 1rem;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            /* border: 1px solid red;
+            outline: 3px solid red;
+            outline-offset: 0.125rem; */
+        }
+
+        /******** Firefox styles ********/
+        /* slider track */
+        input[type="range"]::-moz-range-track {
+            background-color: var(--sliderTrackColor);
+            border-radius: 0.5rem;
+            height: 0.5rem;
+        }
+
+        /* slider thumb */
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            /*Removes extra border that FF applies*/
+            border-radius: 0;
+            /*Removes default border-radius that FF applies*/
+
+            /*custom styles*/
+            background-color: var(--sliderThumbColor);
+            height: 2rem;
+            width: 1rem;
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            /* border: 1px none red;
+            outline: 3px none red;
+            outline-offset: 0.125rem; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="landingPage">
+        <div class="imageSection">
+            <div class="controls">
+                <div class="controlSliders">
+                    <div class="slider"><input id="sliderWidth" type="range"></div>
+                    <div class="slider"><input id="sliderHeight" type="range"></div>
+                </div>
+                <div class="controlRadios">
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">background-image</div>
+                        <div class="radioButtonGroup" id="groupImageType">
+                            <input type="radio" id="bitmap" name="imageType" value="bitmap">
+                            <label for="bitmap">Image</label>
+                            <input type="radio" id="svg" name="imageType" value="svg">
+                            <label for="svg">SVG</label>
+                        </div>
+                    </div>
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">width & height</div>
+                        <div class="radioButtonGroup" id="groupScreenSize">
+                            <input type="radio" id="sizeFullScreen" name="screenSize" value="fullScreen">
+                            <label for="sizeFullScreen">Full Screen</label>
+                            <input type="radio" id="sizeSmall" name="screenSize" value="small">
+                            <label for="sizeSmall">Small</label>
+                        </div>
+                    </div>
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">background-position: (horizontal)</div>
+                        <div class="radioButtonGroup" id="groupHorizontal">
+                            <input type="radio" id="horizontalLeft" name="horizontal" value="left">
+                            <label for="horizontalLeft">Left</label>
+                            <input type="radio" id="horizontalCenter" name="horizontal" value="center">
+                            <label for="horizontalCenter">Center</label>
+                            <input type="radio" id="horizontalRight" name="horizontal" value="right">
+                            <label for="horizontalRight">Right</label>
+                        </div>
+                    </div>
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">background-position: (vertical)</div>
+                        <div class="radioButtonGroup" id="groupVertical">
+                            <input type="radio" id="verticalTop" name="vertical" value="top">
+                            <label for="verticalTop">Top</label>
+                            <input type="radio" id="verticalCenter" name="vertical" value="center">
+                            <label for="verticalCenter">Center</label>
+                            <input type="radio" id="verticalBottom" name="vertical" value="bottom">
+                            <label for="verticalBottom">Bottom</label>
+                        </div>
+                    </div>
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">background-size</div>
+                        <div class="radioButtonGroup" id="groupSize">
+                            <input type="radio" id="sizeCover" name="size" value="center">
+                            <label for="sizeCover">Cover</label>
+                            <input type="radio" id="sizeContain" name="size" value="contain">
+                            <label for="sizeContain">Contain</label>
+                        </div>
+                    </div>
+                    <div class="radioButtonSection">
+                        <div class="radioButtonGroupTitle">background-repeat</div>
+                        <div class="radioButtonGroup" id="groupRepeat">
+                            <input type="radio" id="repeatRepeat" name="repeat" value="repeat">
+                            <label for="repeatRepeat">Repeat</label>
+                            <input type="radio" id="repeatNoRepeat" name="repeat" value="no-repeat">
+                            <label for="repeatNoRepeat">No Repeat</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="image" class="image"></div>
+        </div>
+    </div>
+
+
+    <script type="module">
+
+        import { setWidthHeight } from "/js/commonModule.js";
+
+        let elementImage;
+
+        let elementBitmap;
+        let radioBitmap
+        let radioSvg;
+        let radioHorizontalLeft;
+        let radioHorizontalCenter;
+        let radioHorizontalRight;
+        let radioVerticalTop;
+        let radioVerticalCenter;
+        let radioVerticalBottom;
+        let radioSizeCover;
+        let radioSizeContain;
+        let radioRepeatRepeat;
+        let radioRepeatNoRepeat;
+        let radioSizeFullScreen;
+        let radioSizeSmall;
+        let sliderWidth;
+        let sliderHeight;
+
+        window.onload = function () {
+            elementImage = document.getElementById("image");
+            radioBitmap = document.getElementById("bitmap");
+            radioSvg = document.getElementById("svg");
+            radioHorizontalLeft = document.getElementById("horizontalLeft");
+            radioHorizontalCenter = document.getElementById("horizontalCenter");
+            radioHorizontalRight = document.getElementById("horizontalRight");
+            radioVerticalTop = document.getElementById("verticalTop");
+            radioVerticalCenter = document.getElementById("verticalCenter");
+            radioVerticalBottom = document.getElementById("verticalBottom");
+            radioSizeCover = document.getElementById("sizeCover");
+            radioSizeContain = document.getElementById("sizeContain");
+            radioRepeatNoRepeat = document.getElementById("repeatNoRepeat");
+            radioRepeatRepeat = document.getElementById("repeatRepeat");
+            radioSizeSmall = document.getElementById("sizeSmall");
+            radioSizeFullScreen = document.getElementById("sizeFullScreen");
+            sliderWidth = document.getElementById("sliderWidth");
+            sliderHeight = document.getElementById("sliderHeight");
+
+            radioBitmap.checked = true;
+            radioSizeCover.checked = true;
+            radioHorizontalCenter.checked = true;
+            radioVerticalCenter.checked = true;
+            radioRepeatNoRepeat.checked = true;
+            radioSizeFullScreen.checked = true;
+
+            radioBitmap.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioSvg.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioHorizontalLeft.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioHorizontalCenter.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioHorizontalRight.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioVerticalTop.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioVerticalCenter.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioVerticalBottom.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioSizeContain.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioSizeCover.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioRepeatNoRepeat.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioRepeatRepeat.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioSizeSmall.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            radioSizeFullScreen.addEventListener("click", (event) => {
+                radioClicked(event);
+            });
+            sliderWidth.addEventListener("input", (event) => {
+                sliderChanged(event);
+            });
+            sliderHeight.addEventListener("input", (event) => {
+                sliderChanged(event);
+            });
+
+            setWidthHeight();
+            window.addEventListener("resize", () => {
+                setWidthHeight();
+            });
+
+            sliderWidth.value = 100;
+            sliderHeight.value = 100;
+
+            displayBitmap();
+
+        };
+
+        function sliderChanged(event) {
+            let id = event.target.id;
+            let value = event.target.value;
+            if (id == "sliderWidth") {
+                elementImage.style.width = value + "%";
+            } else if (id == "sliderHeight") {
+                elementImage.style.height = value + "%";
+            }
+            radioSizeFullScreen.checked = false;
+            radioSizeSmall.checked = false;
+        }
+
+        function radioClicked(event) {
+            let id = event.target.id;
+            let checked = event.target.checked;
+            let name = event.target.name;
+            let imageType = document.querySelector('input[name="imageType"]:checked').value;
+            console.log(name, id, checked);
+
+            if (name == "horizontal") {
+                if (id == "horizontalLeft") {
+                    elementImage.style.backgroundPositionX = "left";
+                } else if (id == "horizontalCenter") {
+                    elementImage.style.backgroundPositionX = "center";
+                } else if (id == "horizontalRight") {
+                    elementImage.style.backgroundPositionX = "right";
+                }
+            } else if (name == "vertical") {
+                if (id == "verticalTop") {
+                    elementImage.style.backgroundPositionY = "top";
+                } else if (id == "verticalCenter") {
+                    elementImage.style.backgroundPositionY = "center";
+                } else if (id == "verticalBottom") {
+                    elementImage.style.backgroundPositionY = "bottom";
+                }
+            } else if (name == "size") {
+                if (id == "sizeCover") {
+                    elementImage.style.backgroundSize = "cover";
+                } else if (id == "sizeContain") {
+                    elementImage.style.backgroundSize = "contain";
+                }
+            }
+            else if (name == "repeat") {
+                if (id == "repeatRepeat") {
+                    elementImage.style.backgroundRepeat = "repeat";
+                } else if (id == "repeatNoRepeat") {
+                    elementImage.style.backgroundRepeat = "no-repeat";
+                }
+            } else if (name == "imageType") {
+                if (id == "bitmap") {
+                    displayBitmap();
+                } else if (id == "svg") {
+                    displaySVG();
+                }
+            } else if (name == "screenSize") {
+                console.log("size");
+                if (id == "sizeFullScreen") {
+                    console.log("sizeFullScreen");
+                    elementImage.style.width = "100%";
+                    elementImage.style.height = "100%";
+                    sliderWidth.value = 100;
+                    sliderHeight.value = 100;
+                } else if (id == "sizeSmall") {
+                    let width = 25;
+                    let height = 60;
+                    console.log("sizeSmall");
+                    elementImage.style.width = `${width}%`;
+                    elementImage.style.height = `${height}%`;
+                    sliderWidth.value = width;
+                    sliderHeight.value = height;
+
+                }
+            }
+        }
+
+        function displayBitmap() {
+            elementImage.style.backgroundImage = "url('/img/beachHD.jpg')";
+            elementImage.style.backgroundSize = "cover";
+            elementImage.style.backgroundPosition = "center";
+
+            radioBitmap.checked = true;
+            radioSizeCover.checked = true;
+
+        }
+
+        function displaySVG() {
+            elementImage.style.backgroundImage = "url('/svg/apple.svg')";
+            elementImage.style.backgroundSize = "contain";
+            elementImage.style.backgroundPosition = "center";
+            elementImage.style.backgroundRepeat = "no-repeat";
+
+            radioSvg.checked = true;
+            radioSizeContain.checked = true;
+
+        }
+
+    </script>
+</body>
+
+</html>
