@@ -5,7 +5,7 @@ export function adjustWidthHeight() {
   });
 }
 
-export function setWidthHeight() {
+function setWidthHeight() {
   let windowInnerWidth = window.innerWidth;
   let windowInnerHeight = window.innerHeight;
   let elementClientWidth = document.documentElement.clientWidth;

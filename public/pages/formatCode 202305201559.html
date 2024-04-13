@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // import Prism from 'prismjs';
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <!-- <script src="/js/colorCode.js"></script> -->
+    <!-- <script src="https://unpkg.com/animate-css-grid@latest"></script> -->
+
+    <script src="/js/prism-okaidia.js"></script>
+    <link rel="stylesheet" href="./css/prism-okaidia.css" />
+
+    <!-- <script src="https://unpkg.com/animate-css-grid@latest"></script> -->
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="fontawesome/js/brands.js"></script>
+    <script defer src="fontawesome/js/duotone.js"></script>
+    <script defer src="fontawesome/js/light.js"></script>
+    <script defer src="fontawesome/js/regular.js"></script>
+    <script defer src="fontawesome/js/sharp-regular.js"></script>
+    <script defer src="fontawesome/js/sharp-solid.js"></script>
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="fontawesome/js/fontawesome.js"></script>
+
+    <title>Examples</title>
+    <style>
+        :root {
+            --borderRadius: 20px;
+            --colorTextDark: #000000;
+            --colorTextLight: #ffffff;
+            --colorCard: #ffffff;
+            --colorTitle: #373737;
+            --colorHeaderBackground: hsla(0, 100%, 74%, 1);
+            --colorBackground: hsla(0, 100%, 96%, 1);
+            --colorButtonHover: hsla(0, 100%, 74%, 1);
+            --linkHover: hsl(0, 100%, 50%);
+        }
+
+        @font-face {
+            font-family: "HelveticaBlack";
+            src: url("/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "RobotoFlex";
+            src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "RobotoFlex";
+            src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Ubuntu";
+            src: url("/fonts/Ubuntu_Condensed/UbuntuCondensed-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Cascadia";
+            src: url("/fonts/Microsoft/Cascadia.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "BebasNeus";
+            src: url("/fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Zaio";
+            src: url("/fonts/Zaio/Zaio.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "OrionPro";
+            src: url("/fonts/Orion_Pro/OTF/Orion-Regular.otf") format("opentype");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: RobotoFlex;
+        }
+
+        .landingPage {
+            width: var(--fullWidth);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: start;
+            justify-items: center;
+            margin-bottom: 50px;
+            margin-top: 0px;
+            transition: 300ms;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            grid-column: 1;
+            grid-row: 1;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: 40px;
+        }
+
+        .card {
+            width: clamp(340px, 90%, 500px);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 60px 1fr;
+            background-color: var(--colorCard);
+            border-radius: var(--borderRadius);
+            box-sizing: border-box;
+            filter: drop-shadow(2px 2px 6px #808080);
+        }
+
+        .cardHeader {
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 1;
+            font-family: OrionPro;
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 40px 1fr 40px;
+            grid-template-rows: 1;
+            align-items: center;
+            justify-items: center;
+            border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+            background-color: var(--colorHeaderBackground);
+        }
+
+        .cardIcon {
+            /* width: 80vmax;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; */
+        }
+
+        .cardTitle {
+            width: 100%;
+            height: 100%;
+            font-family: Ubuntu;
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            color: var(--colorTitle);
+            user-select: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .cardTitle {
+                font-size: 20px;
+            }
+        }
+
+        .cardMain {
+            grid-column: 1;
+            display: grid;
+            grid-template-columns: 2fr;
+            grid-template-rows: 1fr 60px;
+            padding: 14px;
+        }
+
+        .link {
+            height: 30px;
+            font-family: RobotoFlex;
+            font-weight: 500;
+            font-size: 20px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .description {
+            font-family: RobotoFlex;
+            font-weight: 300;
+            font-size: 18px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #404040;
+        }
+
+        .link a:hover {
+            color: var(--colorHeaderBackground);
+        }
+
+        .command {
+            height: 30px;
+            font-weight: 500;
+            font-size: 20px;
+            margin-left: 20px;
+            margin-top: 10px;
+            font-family: Cascadia;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .button {
+            margin-top: 20px;
+            width: 150px;
+            height: 40px;
+            background-color: #f0f0f0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            font-weight: 500;
+            font-size: 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .button:hover {
+            background-color: var(--linkHover);
+        }
+
+        .button a {
+            text-decoration: none;
+            color: #404040;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .codeBlock {
+            grid-column: 1;
+            grid-row: 1;
+            height: 90vh;
+            width: 80%;
+            background-color: #d0d0d0;
+            display: block;
+            margin-top: 40px;
+            padding: 10px;
+            font-family: Cascadia;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+
+        @media screen and (max-width: 600px) {
+            .command {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="landingPage" class="landingPage">
+        <div id="codeBlock" class="codeBlock" style="margin-top: 40px">
+            <pre><code class="language-css">.codeBlock {
+            grid-column: 1;
+            grid-row: 1;
+            height: 90vh;
+            width: 80%;
+            background-color: #d0d0d0;
+            display: block;
+            margin-top: 40px;
+            padding: 10px;
+            font-family: Cascadia;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            }</code></pre>
+        </div>
+
+        <script type="module">
+
+            import { adjustWidthHeight } from "/js/common.js";
+
+            let elementLandingPage;
+            let elementCode;
+            let elementCodeBlock;
+            let elementCards;
+
+            let hue;
+            let hslBackground;
+            let hslHeader;
+            let hslLink;
+            let hslCode;
+            let examples = [];
+            let isMobile = false;
+
+            window.onload = function () {
+                adjustWidthHeight();
+                window.addEventListener("scroll", adjustCodeBlock);
+                elementLandingPage = document.getElementById("landingPage");
+                elementCode = document.getElementById("code");
+                elementCodeBlock = document.getElementById("codeBlock");
+                elementCodeBlock.addEventListener("dblclick", hideCode);
+                elementCards = document.getElementById("cards");
+                if (window.matchMedia("(max-width: 600px)").matches) {
+                    elementLandingPage.style.gridTemplateColumns = "100%";
+                    isMobile = true;
+                }
+                insertFileContents("grid.html");
+            };
+
+            function addClickEventTitle() {
+                let titles = document.getElementsByClassName("cardTitle");
+                titles = [...titles];
+                titles.forEach((title) => {
+                    title.addEventListener("click", changeColorScheme);
+                });
+            }
+
+            async function showCodeBlock(filename) {
+                elementLandingPage.style.gridTemplateColumns = "60% 40%";
+                elementCodeBlock.style.display = "block";
+                let filepath = "./code/" + filename;
+                let response = await fetch(filepath);
+                let text_data = await response.text();
+                elementCode.innerText = text_data;
+            }
+
+            function adjustCodeBlock() {
+                let scroll = window.scrollY + 40;
+                elementCodeBlock.style.marginTop = scroll + "px";
+            }
+
+            async function showDemoBlock(filename) {
+                elementLandingPage.style.gridTemplateColumns = "50% 50%";
+                elementCodeBlock.style.display = "block";
+                let filepath = "./code/" + filename;
+                let response = await fetch(filepath);
+                let contents = await response.text();
+                elementCode.innerHTML = contents;
+            }
+
+            async function getFileContents(filename) {
+                let filepath = "./code/" + filename;
+                let response = await fetch(filepath);
+                let contents = await response.text();
+                return contents; //returns a string
+            }
+
+            async function getFileContentsSplit(filename) {
+                let filepath = "./code/" + filename;
+                let response = await fetch(filepath);
+                let contents = await response.text();
+                let splitContents = contents.split("\n");
+                return splitContents; //returns an array of lines
+            }
+
+            async function insertFileContents(filename) {
+
+                let html = false;
+                let css = false;
+                let js = false;
+
+                let contents = await getFileContents(filename);
+                let lines = await getFileContentsSplit(filename);
+
+                html = true;
+                let elementPre;
+                let elementCode;
+
+                points = [];
+
+                let point = new Object();
+                point.start = 0;
+                let indexResult = 0;
+                let indexHtml = 0;
+                let indexCss;
+                let indexJs;
+                let indexCurrent = 0;
+                let done = false;
+                let loop = 0;
+                let cssDone = false;
+                let jsDone = false;
+
+
+                {
+                    point = new Object();
+                    point.type = "html";
+                    point.start = 0;
+                    point.end = contents.length;
+                    points.push(point);
+                }
+
+                while (!done) {
+
+                    point = new Object();
+
+                    indexCss = contents.indexOf("<style>", indexCurrent);
+                    indexJs = contents.indexOf("<script>", indexCurrent);
+
+                    if (indexCss == -1) {
+                        cssDone = true;
+                    }
+                    if (indexJs == -1) {
+                        jsDone = true;
+                    }
+
+                    if ((!cssDone && !jsDone)) {
+                        if (indexCss < indexJs && cssDone == false) {
+                            indexCurrent = indexCss;
+                            css = true;
+                            js = false;
+                            point.type = "css";
+                            point.start = indexCss + 7;
+                        }
+                        if (indexJs < indexCss && indexJs == false) {
+                            indexCurrent = indexJs;
+                            css = false;
+                            js = true;
+                            point.type = "js";
+                            point.start = indexJs + 8;
+                        }
+                    }
+
+                    if (!cssDone && jsDone) {
+                        indexCurrent = indexCss;
+                        css = true;
+                        js = false;
+                        point.type = "css";
+                        point.start = indexCss + 7;
+                    }
+
+                    if (!jsDone && cssDone) {
+                        indexCurrent = indexJs;
+                        css = false;
+                        js = true;
+                        point.type = "js";
+                        point.start = indexJs + 8;
+                    }
+
+                    if (css) {
+                        indexCss = contents.indexOf("</style>", indexCurrent);
+                        indexCurrent = indexCss;
+                        point.end = indexCss
+                    }
+
+                    if (js) {
+                        indexJs = contents.indexOf("<\/script>", indexCurrent);
+                        indexCurrent = indexJs;
+                        point.end = indexJs;
+                    }
+
+                    if (css || js) {
+                        points.push(point);
+                    }
+
+                    css = false;
+                    js = false;
+
+                    if (indexCss == -1 && indexJs == -1) {
+                        done = true;
+                    }
+
+                    loop = loop + 1;
+                }
+
+                console.log(points);
+
+
+                // points.forEach((point) => {
+                //     let substring = contents.substring(point.start, point.end);
+                //     if (point.type == "css") {
+                //         let elementPre = document.createElement("pre");
+                //         elementPre.className = "language-css";
+                //         let elementCode = document.createElement("code");
+                //         elementCode.className = "language-css";
+                //         elementCode.innerText = substring;
+                //         elementPre.appendChild(elementCode);
+                //         elementCodeBlock.appendChild(elementPre);
+                //     }
+                //     if (point.type == "js") {
+                //         let elementPre = document.createElement("pre");
+                //         elementPre.className = "language-js";
+                //         let elementCode = document.createElement("code");
+                //         elementCode.className = "language-js";
+                //         elementCode.innerText = substring;
+                //         elementPre.appendChild(elementCode);
+                //         elementCodeBlock.appendChild(elementPre);
+                //     }
+                // });
+
+            }
+
+            function hideCode() {
+                elementLandingPage.style.gridTemplateColumns = "100%";
+                elementCodeBlock.style.display = "none";
+            }
+
+            function changeColorScheme() {
+                hue = getRandomInt(360);
+                hslBackground = `hsl(${hue},100%, 96%)`;
+                hslHeader = `hsl(${hue},100%, 74%)`;
+                hslLink = `hsl(${hue},100%, 74%)`;
+                hslCode = `hsl(${hue},100%, 85%)`;
+
+                document.documentElement.style.setProperty("--linkHover", hslLink);
+
+                let headers = document.getElementsByClassName("cardHeader");
+                for (let i = 0; i < headers.length; i++) { headers[i].style.backgroundColor = hslHeader; }
+                elementLandingPage.style.backgroundColor = hslBackground; document.body.style.backgroundColor = hslBackground;
+                codeBlock.style.backgroundColor = hslCode;
+            } function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            } function fetchFile(filename) {
+                fetch(filename).then((response) => response.json())
+                    .then((json) => {
+                        let element = document.getElementById("code");
+                        element.innerHTML = json.code;
+                    });
+            }
+
+
+
+        </script>
+</body>
+
+</html>

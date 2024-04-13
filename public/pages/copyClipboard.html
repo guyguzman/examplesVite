@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/duotone.js"></script>
+    <script defer src="fontawesome/js/brands.js"></script>
+    <script defer src="fontawesome/js/light.js"></script>
+    <script defer src="fontawesome/js/regular.js"></script>
+    <script defer src="fontawesome/js/sharp-regular.js"></script>
+    <script defer src="fontawesome/js/sharp-solid.js"></script>
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="fontawesome/js/fontawesome.js"></script>
+    <title>Template</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+
+    <style>
+        @font-face {
+            font-family: 'HelveticaBlack';
+            src: url('/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: 'Monseratt';
+            src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Cascadia';
+            src: url('/fonts/Microsoft/Cascadia.ttf') format("truetype");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: RobotoFlex;
+            font-size: 16px;
+            /* background-color: yellowgreen; */
+        }
+
+        .landingPage {
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            grid-template: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            background-color: #DBDDE2;
+        }
+
+        .redButton {
+            width: 200px;
+            height: 50px;
+            background-color: #B52BFF;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .redButton:hover {
+            cursor: pointer;
+            background-color: #A600FF;
+        }
+
+        .size {
+            height: clamp(200px, 20%, 300px);
+            width: clamp(340px, 20%, 600px);
+            background-color: #d0d2d6;
+        }
+
+        .flexBox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* background-color: dodgerblue; */
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .flexColumn {
+            display: flex;
+            flex-direction: column;
+            /* background-color: salmon; */
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #textArea {
+            font-size: 14px;
+            height: 60px;
+        }
+
+        #divText {
+            font-size: 14px;
+            height: 60px;
+        }
+
+        .code {
+            font-family: Cascadia;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landingPage">
+        <div class="flexColumn">
+            <div class="flexBox">
+                <textarea id="textArea" class="size code">When using a textarea element or an input element</textarea>
+                <div id="buttonTextArea" class="redButton">Copy Above Text</div>
+            </div>
+            <div class="flexBox" style="margin-top:40px;">
+                <div id="divText" class="size code">When using a div element</div>
+                <div id="buttonDiv" class="redButton">Copy Above Text</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let elementTextArea;
+        let elementDiv;
+        let elementButtonTextArea;
+        let elementButtonTextDiv;
+
+        window.onload = function () {
+            elementTextArea = document.getElementById("textArea");
+            elementDiv = document.getElementById("divText");
+            elementButtonTextArea = document.getElementById("buttonTextArea");
+            elementButtonTextDiv = document.getElementById("buttonDiv");
+            elementButtonTextArea.addEventListener("click", (event) => copyClipboardDiv(event, elementTextArea));
+            elementButtonTextDiv.addEventListener("click", (event) => copyClipboardDiv(event, elementDiv));
+        };
+
+        function copyClipboardTextArea(event) {
+            elementTextArea.select();
+            if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+                navigator.clipboard.writeText(elementTextArea.value);
+        }
+
+        function copyClipboardDiv(event, element) {
+            const storage = document.createElement("textarea");
+            storage.value = element.innerHTML;
+            element.appendChild(storage);
+            storage.select();
+            storage.setSelectionRange(0, 99999);
+            if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+                navigator.clipboard.writeText(storage.value);
+            element.removeChild(storage);
+        }
+    </script>
+</body>
+
+</html>

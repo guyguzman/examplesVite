@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <title>Snapping</title>
+
+    <style>
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: var(--fullWidth);
+            height: 50vh;
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="background-color: salmon"></div>
+    <div class="container" style="background-color: yellow"></div>
+    <div class="container" style="background-color: dodgerblue"></div>
+    <div class="container" style="background-color: lawngreen"></div>
+    <div class="container" style="background-color: violet"></div>
+    <div class="container" style="background-color: orange"></div>
+    <div class="container" style="background-color: yellowgreen"></div>
+    <div class="container" style="background-color: purple"></div>
+</body>
+
+</html>

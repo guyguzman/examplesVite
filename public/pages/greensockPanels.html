@@ -39,8 +39,12 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-color: #202020;
-            margin-bottom: 200px;
+            background-color: #606060;
+        }
+
+        @font-face {
+            font-family: 'HelveticaBlack';
+            src: url('/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf') format("opentype");
         }
 
         @font-face {
@@ -48,23 +52,32 @@
             src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format("truetype");
         }
 
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+        }
+
         .landingPage {
             width: var(--fullWidth);
-            height: var(--fullHeight);
+            height: calc(var(--fullHeight));
+            background-color: #c0c0c0;
             font-family: 'Monseratt';
             font-size: 80px;
             background-color: black;
-            position: relative;
         }
 
-        .box {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            justify-self: start;
-            position: absolute;
+
+        .panel {
+            background-color: #606060;
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
             box-sizing: border-box;
-            opacity: 0;
+            /* position: absolute; */
         }
 
         .dodgerBlue {
@@ -86,14 +99,12 @@
 </head>
 
 <body>
-
-    <!-- <div class="landingPage">
-    </div> -->
-    <div id="dodgerBlue" class="box dodgerBlue"></div>
-    <div id="hotPink" class="box hotPink"></div>
-    <div id="limeGreen" class="box limeGreen"></div>
-    <div id="yellow" class="box yellow"></div>
-
+    <div class="landingPage">
+        <div id="dodgerBlue" class="panel dodgerBlue">DODGER BLUE</div>
+        <div id="hotPink" class="panel hotPink">HOT PINK</div>
+        <div id="limeGreen" class="panel limeGreen">LIME GREEN</div>
+        <div id="yellow" class="panel yellow">YELLOW</div>
+    </div>
     <script type="module">
 
         import { elementPosition } from '/js/elementPosition.js';
@@ -109,76 +120,30 @@
             elementLimeGreen = document.getElementById("limeGreen");
             elementYellow = document.getElementById("yellow");
             adjustWidthHeight();
-            animateSquares();
+            animatePanels();
         };
 
+        function animatePanels() {
 
-        function animateSquares() {
-
-            let boxSize = 100 / 2;
-
-            let boxTop = window.innerHeight * .5;
-
-            elementDodgerBlue.style.top = (window.innerHeight * .5) - boxSize + "px";
-            elementHotPink.style.top = (window.innerHeight * 1) - boxSize + "px";
-            elementLimeGreen.style.top = (window.innerHeight * 2) - boxSize + "px";
-            elementYellow.style.top = (window.innerHeight * 3) - boxSize + "px";
-
-            let elementDodgerBluePosition = elementPosition(elementDodgerBlue);
-            let elementHotPinkPosition = elementPosition(elementHotPink);
-            let elementLimeGreenPosition = elementPosition(elementLimeGreen);
-            let elementYellowPosition = elementPosition(elementYellow);
-
-            elementDodgerBlue.style.left = elementDodgerBluePosition.screenLeftEdge + "px";
-            elementHotPink.style.left = elementHotPinkPosition.screenLeftEdge + "px";
-            elementLimeGreen.style.left = elementLimeGreenPosition.screenLeftEdge + "px";
-            elementYellow.style.left = elementYellowPosition.screenLeftEdge + "px";
-
-            elementDodgerBlue.style.opacity = 1;
-            elementHotPink.style.opacity = 1;
-            elementLimeGreen.style.opacity = 1;
-            elementYellow.style.opacity = 1;
-
-            let timeline = gsap.timeline({ repeat: 0, repeatDelay: 1, paused: true });
-
-            timeline.fromTo(elementDodgerBlue,
-                {
-                    left: elementDodgerBluePosition.screenLeftEdge,
-                },
-                {
-                    left: elementDodgerBluePosition.screenRightEdge,
-                    rotation: 360, duration: 4, ease: "power1.inOut"
-                });
-
-            let start = (window.innerHeight * .6);
-            let end = (window.innerHeight * .4);
-
-            gsap.to(elementDodgerBlue, {
+            gsap.to(
+                elementDodgerBlue, {
                 scrollTrigger: {
                     trigger: elementHotPink,
-                    id: "hotPink",
-                    markers: { startColor: "red", endColor: "white", fontSize: "16px" },
-                    start: "top 80%",
-                    end: "bottom 60%",
-                    pin: true,
+                    start: "top top",
+                    end: "bottom top",
                     scrub: true,
-                    toggleActions: "play reverse play reset",
+                    pin: true,
+                    markers: {
+                        startColor: "black",
+                        endColor: "black",
+                        fontSize: "16px"
+                    },
+                    toggleActions: "restart pause reverse pause"
                 },
-                left: elementHotPinkPosition.parentCenterX,
-                duration: 1
+                x: 1000,
+                duration: 5
             });
 
-            console.log(window.innerHeight);
-        }
-
-        function animate() {
-            gsap.to(".box", {
-                x: 500,
-                rotation: 360,
-                backgroundColor: '#ffff00',
-                ease: "easeInOut",
-                duration: 2
-            });
         }
 
         function setWidthHeight() {

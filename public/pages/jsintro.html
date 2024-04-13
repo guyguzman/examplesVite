@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap"
+        rel="stylesheet">
+    <title>jsIntro</title>
+    <style>
+        body {
+            font-family: 'Roboto Flex';
+            font-weight: 200;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 100vh;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 800px;
+            background-color: #d2d4d6;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container" class="container">
+        <div id="centerbox" class="box"></div>
+    </div>
+    <script>
+        var elem;
+        var html = "";
+        var container;
+        var box;
+
+        window.onload = function () {
+
+            container = document.getElementById("container");
+            centerbox = document.getElementById("centerbox");
+
+            // elem = document.createElement("div");
+            // elem.id = 'myID';
+            // elem.innerHTML = ' my Text ';
+            // elem.classList.add('box');
+            //centerbox.appendChild(elem);
+
+            fetchAPI();
+
+            myArray = ['Guy', 'David', 'Dakota'];
+
+            let myJson = '{"username": "admin"}';
+            let myJsonObject = JSON.parse(myJson);
+
+            console.log(
+                "Json Object " + myJsonObject);
+
+            if (Array.isArray(myArray)) {
+                console.log("Is an Array");
+            } else {
+                console.log("Is Not Array");
+            }
+
+            if (isJsonObject(myJsonObject)) {
+                console.log("Is a JSON Object");
+            } else {
+                console.log("Is Not a JSON Object");
+            }
+        }
+
+        function isJsonObject(strData) {
+            try {
+                JSON.parse(strData);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+
+        const fetchAPI = async () => {
+
+            var guyguzman = "https://api.github.com/users/guyguzman";
+            var weather = "https://api.openweathermap.org/data/3.0/onecall?lat=46.04&lon=-118.37&appid=9486c8745fb41aa473fa68e498c09273";
+
+            const APIResponse = await fetch(weather);
+            const ResponseJsonData = await APIResponse.json();
+
+            const minuteForecast = ResponseJsonData.minutely;
+
+            console.log(typeof (minuteForecast));
+
+            minuteForecast.forEach(displayMinuteForecast);
+            centerbox.innerHTML = centerbox.innerHTML + html;
+
+            console.log(ResponseJsonData);
+            var temp = ResponseJsonData.current.temp;
+            var sunrise = ResponseJsonData.current.sunrise;
+            console.log("Temp " + temp);
+            console.log("Sunrise " + sunrise);
+            elem.innerHTML = temp;
+
+            const unixTimestamp = sunrise
+            const milliseconds = unixTimestamp * 1000
+            const dateObject = new Date(milliseconds)
+            console.log(dateObject);
+
+            console.log(dateObject.getFullYear());
+            console.log(minuteForecast);
+
+        }
+
+        function displayMinuteForecast(item, index, array) {
+            const dateObject = new Date(item.dt * 1000)
+            html = html + `<div>${dateObject.toLocaleString()}</div>`
+        }
+    </script>
+</body>
+
+</html>

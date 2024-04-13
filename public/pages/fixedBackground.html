@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/common.css" />
+
+
+  <title>Learning Design</title>
+
+  <style>
+    :root {
+      --primaryColor: #b7001e;
+    }
+
+    @font-face {
+      font-family: "HelveticaBlack";
+      src: url("/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf") format("opentype");
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .backgroundAttachmentFix {
+      background-image: url('/img/canoe.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(0, 0, 0, .5);
+      background-blend-mode: multiply;
+      width: var(--fullWidth);
+      height: var(--fullHeight);
+      position: fixed;
+      transition: width 250ms ease-in-out, height 250ms ease-in-out;
+    }
+
+    .content {
+      position: absolute;
+    }
+
+    .containerText {
+      width: var(--fullWidth);
+      height: var(--fullHeight);
+      color: var(--primaryColor);
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 100px;
+      font-family: "HelveticaBlack";
+    }
+
+    @media screen and (max-width: 768px) {
+      .containerText {
+        font-size: 6vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- This solves the fixed background attachment for mobile Safari (iPhone) devices -->
+
+  <!-- First add the element below (which contains the image, etc.) -->
+
+  <div class="backgroundAttachmentFix"></div>
+
+  <!-- Next add the element content below which is just set to position: absolute -->
+  <!-- Put all of your code in the content div below -->
+
+  <div class="content">
+    <div class="containerText">
+      <div>CAMERON SHANNON</div>
+    </div>
+    <div class="containerText">
+      <div>DAKOTA MORROW</div>
+    </div>
+  </div>
+  <script type="module">
+
+    import { adjustWidthHeight } from "/js/common.js";
+    window.onload = function () {
+      adjustWidthHeight();
+    };
+
+  </script>
+</body>
+
+</html>

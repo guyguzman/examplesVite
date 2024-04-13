@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Choose the FontAwesome library you want to use from the list below. Comment-out the others -->
+
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/duotone.js"></script>
+    <script defer src="fontawesome/js/brands.js"></script>
+    <script defer src="fontawesome/js/light.js"></script>
+    <script defer src="fontawesome/js/regular.js"></script>
+    <script defer src="fontawesome/js/sharp-regular.js"></script>
+    <script defer src="fontawesome/js/sharp-solid.js"></script>
+    <script defer src="fontawesome/js/solid.js"></script>
+    <script defer src="fontawesome/js/thin.js"></script>
+
+    <!-- Keep the FontAwesome file below. -->
+
+    <script defer src="fontawesome/js/fontawesome.js"></script>
+    <title>Template</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/common.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'HelveticaBlack';
+            src: url('/fonts/HelveticaNeue/HelveticaNeueLTStd-Blk.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: 'Monseratt';
+            src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url('/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+        }
+
+        .landingPage {
+            width: var(--fullWidth);
+            height: var(--fullHeight);
+            background-color: #c0c0c0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            font-family: 'Monseratt';
+            font-size: 80px;
+            color: #606060;
+        }
+
+        .svgFill {
+            fill: #ffffff;
+            fill-opacity: .8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landingPage">
+        <!-- <div style="width:100vmin;height:100vmin;display:none;">
+            <svg id="redCircle" viewBox="0 0 100 100">
+
+                <clipPath id="myClip1" clipPathUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="35" />
+                </clipPath>
+
+                <clipPath id="myClip2" clipPathUnits="objectBoundingBox">
+                    <circle cx=".5" cy=".5" r=".35" />
+                </clipPath>
+                <rect id="r1" x="0" y="0" width="49" height="49" />
+                <rect id="r2" x="0" y="51" width="49" height="49" />
+                <rect id="r3" x="51" y="51" width="49" height="49" />
+                <rect id="r4" x="51" y="0" width="49" height="49" />
+                <use clip-path="url(#myClip1)" xlink:href="#r1" fill="red" />
+                <use clip-path="url(#myClip1)" xlink:href="#r2" fill="red" />
+                <use clip-path="url(#myClip1)" xlink:href="#r3" fill="red" />
+                <use clip-path="url(#myClip2)" xlink:href="#r4" fill="red" />
+            </svg>
+        </div> -->
+
+
+        <div id="divGuyGuzman"
+            style="clip-path: url(#clipGuyGuzman); backdrop-filter: blur(5px);display:block;width:90vw">
+            <svg id="svgGuyGuzman" class="svgFill" viewBox="0 0 100 10.92033">
+                <defs>
+                    <clipPath id="clipGuyGuzman" clipPathUnits="objectBoundingBox">
+                        <path d=" M0.079,0.88 c-0.007,0.084,-0.018,0.12,-0.03,0.12 C0.019,1,0,0.781,0,0.509
+                        C0,0.146,0.028,0,0.051,0 c0.027,0,0.043,0.132,0.048,0.357 h-0.031
+                        c-0.001,-0.069,-0.008,-0.119,-0.015,-0.119 c-0.022,0,-0.021,0.213,-0.021,0.278
+                        c0,0.09,0.004,0.246,0.024,0.246 c0.007,0,0.015,-0.035,0.017,-0.106 h-0.014 v-0.205 h0.043 v0.525 h-0.02
+                        l-0.001,-0.098 M0.202,0.608 c0,0.265,-0.016,0.392,-0.047,0.392 s-0.048,-0.127,-0.048,-0.392 V0.023
+                        h0.032 V0.543 c0,0.098,0,0.219,0.016,0.219 c0.015,0,0.015,-0.122,0.015,-0.219 V0.023 h0.032 V0.608
+                        M0.246,0.626 L0.209,0.023 h0.035 l0.017,0.352 L0.28,0.023 h0.035 l-0.037,0.603 v0.352 h-0.032 v-0.352
+                        M0.441,0.88 c-0.007,0.084,-0.018,0.12,-0.03,0.12 c-0.031,0,-0.05,-0.219,-0.05,-0.491
+                        c0,-0.364,0.028,-0.509,0.051,-0.509 c0.027,0,0.043,0.132,0.048,0.357 h-0.031
+                        c-0.001,-0.069,-0.008,-0.119,-0.015,-0.119 c-0.022,0,-0.021,0.213,-0.021,0.278
+                        c0,0.09,0.004,0.246,0.024,0.246 c0.007,0,0.015,-0.035,0.017,-0.106 h-0.014 v-0.205 h0.043 v0.525 h-0.02
+                        l-0.001,-0.098 M0.564,0.608 c0,0.265,-0.016,0.392,-0.047,0.392 s-0.048,-0.127,-0.048,-0.392 V0.023
+                        h0.032 V0.543 c0,0.098,0,0.219,0.016,0.219 c0.015,0,0.015,-0.122,0.015,-0.219 V0.023 h0.032 V0.608
+                        M0.57,0.747 l0.048,-0.48 h-0.046 V0.023 h0.088 V0.237 l-0.049,0.496 h0.051 v0.245 h-0.093 v-0.23
+                        M0.669,0.023 h0.046 l0.015,0.561 h0 l0.015,-0.561 h0.046 V0.977 h-0.03 V0.365 h0 l-0.018,0.612 h-0.024
+                        l-0.018,-0.612 h0 v0.612 h-0.03 V0.023 M0.832,0.023 h0.031 l0.038,0.954 h-0.033 l-0.004,-0.136 h-0.033
+                        l-0.005,0.136 h-0.032 L0.832,0.023 m0.025,0.614 l-0.009,-0.294 h0 l-0.01,0.294 h0.02 M0.906,0.023 h0.033
+                        l0.03,0.511 h0 V0.023 h0.03 V0.977 h-0.031 l-0.032,-0.521 h0 v0.521 h-0.03 V0.023 " />
+                    </clipPath>
+                </defs>
+                <g>
+                    <path id="pathGuyGuzman"
+                        d="
+                        M7.94175,9.60641c-.71517,.91965-1.82462,1.31392-2.96342,1.31392C1.898,10.92033,0,8.52533,0,5.5624,0,1.59128,2.78878,0,5.13878,0c2.6572,0,4.33604,1.44551,4.80321,3.89774h-3.08033c-.11691-.75871-.7592-1.29925-1.5184-1.29925-2.20422,0-2.13133,2.32162-2.13133,3.0368,0,.97835,.39427,2.68655,2.35048,2.68655,.74452,0,1.50372-.3796,1.66417-1.15347h-1.41616v-2.23406h4.26316v5.73753h-2.02959l-.10224-1.06542Z
+                        M20.24694,6.64299c0,2.89004-1.56193,4.27734-4.7445,4.27734s-4.75918-1.3873-4.75918-4.27734V.2485h3.21143V5.92684c0,1.0664,0,2.395,1.56193,2.395,1.5184,0,1.5184-1.3286,1.5184-2.395V.2485h3.21192V6.64299Z
+                        M24.55118,6.83279L20.88726,.2485h3.54749l1.73706,3.83904L27.98225,.2485h3.51814l-3.73729,6.58429v3.83904h-3.21192v-3.83904Z
+                        M44.11083,9.60641c-.71517,.91965-1.82462,1.31392-2.96342,1.31392-3.08033,0-4.97833-2.395-4.97833-5.35793,0-3.97112,2.78878-5.5624,5.13878-5.5624,2.6572,0,4.33604,1.44551,4.80321,3.89774h-3.08033c-.11691-.75871-.7592-1.29925-1.5184-1.29925-2.20422,0-2.13133,2.32162-2.13133,3.0368,0,.97835,.39427,2.68655,2.35048,2.68655,.74452,0,1.50372-.3796,1.66417-1.15347h-1.41616v-2.23406h4.26316v5.73753h-2.02959l-.10224-1.06542Z
+                        M56.41552,6.64299c0,2.89004-1.56145,4.27734-4.74401,4.27734s-4.75918-1.3873-4.75918-4.27734V.2485h3.21143V5.92684c0,1.0664,0,2.395,1.56242,2.395,1.5184,0,1.5184-1.3286,1.5184-2.395V.2485h3.21094V6.64299Z
+                        M56.96829,8.16041l4.84674-5.24053h-4.56889V.2485h8.80319V2.58431l-4.89077,5.41565h5.12361v2.67187h-9.31388v-2.51142Z
+                        M66.8506,.2485h4.56889l1.48905,6.13131h.02935l1.48905-6.13131h4.56987V10.67183h-3.0368V3.98579h-.02935l-1.80995,6.68604h-2.39402l-1.81092-6.68604h-.02935v6.68604h-3.03582V.2485Z
+                        M83.24284,.2485h3.13854l3.79599,10.42333h-3.32834l-.4383-1.48905h-3.31367l-.46765,1.48905h-3.22562L83.24284,.2485Zm2.5261,6.70071l-.93432-3.21192h-.02935l-1.0077,3.21192h1.97137Z
+                        M90.61274,.2485h3.2853l3.0368,5.57659h.02837V.2485h3.0368V10.67183h-3.12387l-3.19724-5.6935h-.02935v5.6935h-3.0368V.2485Z " />
+                </g>
+            </svg>
+        </div>
+    </div>
+    <script>
+
+        window.onload = function () {
+            setViewBoxClipPathScale('svgGuyGuzman', 'clipPathGuyGuzman');
+        };
+
+        function setViewBoxClipPathScale(svgId, clipPathId) {
+
+            const currentSVG = document.getElementById(svgId);
+            const currentClipPath = document.getElementById(clipPathId);
+            const lowermin = 0.00001;
+
+            var bbox = currentSVG.getBBox();
+            var x = bbox.x;
+            var y = bbox.y;
+            var width = bbox.width;
+            var height = bbox.height;
+            var scaleX = 1 / width;
+            var scaleY = 1 / height;
+            var absX = Math.abs(x);
+            var absY = Math.abs(y);
+            if (absX < lowermin) x = 0;
+            if (absY < lowermin) y = 0;
+            var translateX = 0;
+            var translateY = 0;
+            translateX = x * (-1);
+            translateY = y * (-1);
+
+            const viewbox = `${x} ${y} ${width} ${height}`;
+            const scale = `scale(${scaleX} ${scaleY})`;
+            const translate = `translate(${translateX} ${translateY})`;
+
+            console.log('viewbox', viewbox);
+            console.log('scale', scale);
+            console.log('translate', translate);
+
+            currentSVG.setAttribute('viewBox', viewbox);
+            currentClipPath.setAttribute('transform', scale);
+
+        }
+
+        function svgResetOrigin(svgId, targetId) {
+
+            const currentSVG = document.getElementById(svgId);
+            const target = document.getElementById(targetId);
+            const lowermin = 0.00001;
+
+            var bbox = currentSVG.getBBox();
+            var x = bbox.x;
+            var y = bbox.y;
+            var width = bbox.width;
+            var height = bbox.height;
+            var scaleX = 1 / width;
+            var scaleY = 1 / height;
+            var absX = Math.abs(x);
+            var absY = Math.abs(y);
+            if (absX < lowermin) x = 0;
+            if (absY < lowermin) y = 0;
+            var translateX = 0;
+            var translateY = 0;
+            translateX = x * (-1);
+            translateY = y * (-1);
+
+            const translate = `translate(${translateX} ${translateY})`;
+
+            target.setAttribute('transform', translate);
+        }
+
+        function setViewBox(svgId) {
+
+            const currentSVG = document.getElementById(svgId);
+            const lowermin = 0.00001;
+
+            var bbox = currentSVG.getBBox();
+            var x = bbox.x;
+            var y = bbox.y;
+            var width = bbox.width;
+            var height = bbox.height;
+            var scaleX = 1 / width;
+            var scaleY = 1 / height;
+            var absX = Math.abs(x);
+            var absY = Math.abs(y);
+            if (absX < lowermin) x = 0;
+            if (absY < lowermin) y = 0;
+
+            const viewbox = `${x} ${y} ${width} ${height}`;
+            const scale = `scale(${scaleX} ${scaleY})`;
+
+            currentSVG.setAttribute('viewBox', viewbox);
+
+        }
+    </script>
+</body>
+
+</html>

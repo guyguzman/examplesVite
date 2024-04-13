@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Image Zoom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            background-color: #c0c0c0;
+        }
+
+        .parent {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .child {
+            width: 100%;
+            height: 100%;
+            background-image: url("./img/kidsSkiing.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: transform 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div id="parent" class="parent">
+            <div id="child" class="child"></div>
+        </div>
+    </div>
+    <div class="container"></div>
+
+    <script>
+        var elementContainer;
+        var elementParent;
+        var elementChild;
+
+        var zoomDefault = 1;
+        var zoomMax = 1.2;
+        var scrolling = false;
+        var scrollYMax = 500;
+
+        window.addEventListener("load", function () {
+            elementContainer = document.getElementById("container");
+            elementParent = document.getElementById("parent");
+            elementChild = document.getElementById("child");
+        });
+
+        $(window).scroll(function (event) {
+            event.preventDefault;
+            event.stopPropagation;
+            scrolling = true;;
+        });
+
+        //This automatically checks for scrolling every 250ms
+
+        setInterval(() => {
+            if (scrolling) {
+                scrolling = false;
+                console.log(elementContainer);
+                windowScroll(event);
+                if (window.scrollY > scrollYMax) {
+                    console.log("gt " + window.scrollY + " " + window.pageYOffset);
+
+                } else {
+                    console.log("lt " + window.scrollY + " " + window.pageYOffset);
+                }
+            } else {
+
+            }
+        }, 250);
+
+        function windowScroll(event) {
+            zoomInOut(event);
+            // event.preventDefault;
+            // event.stopPropagation;
+        }
+
+        function preventScroll(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        function zoomInOut(e) {
+            if (window.scrollY < scrollYMax) {
+                console.log(window.scrollY);
+                let zoom = zoomDefault + window.scrollY / scrollYMax;
+                if (zoom > zoomMax) zoom = zoomMax;
+                elementChild.style.transform = `scale(${zoom})`;
+            }
+        }
+
+        function zoomReset() {
+            elementChild.style.transform = "scale(1)";
+            elementChild.style.transform = "scale(1)";
+        }
+    </script>
+</body>
+
+</html>

@@ -23,7 +23,7 @@
     <!-- Keep the FontAwesome file below. -->
 
     <script defer src="fontawesome/js/fontawesome.js"></script>
-    <title>Clipping Path CSS</title>
+    <title>Clipping Path</title>
 
     <link rel="stylesheet" href="css/common.css" />
     <script src="js/common.js"></script>
@@ -32,6 +32,7 @@
         body {
             margin: 0;
             padding: 0;
+            background-color: rgba(0, 0, 0, 1);
         }
 
         @font-face {
@@ -46,16 +47,12 @@
 
         .landingPage {
             width: var(--fullWidth);
-            height: var(--fullHeight);
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             gap: 40px;
             align-content: center;
             justify-content: center;
-            background-color: #000000;
-            /* background-image: url("./img/virginiaBeachPurpleBlue.jpg");
-            background-size: cover; */
             font-family: 'RobotoFlex';
             font-size: 80px;
             color: #606060;
@@ -65,12 +62,6 @@
             width: clamp(360px, 25vw, 500px);
             height: clamp(360px, 25vw, 500px);
             background-image: url("./img/virginiaBeachPurpleBlue.jpg");
-            background-size: cover;
-        }
-
-        .exampleNoImage {
-            width: clamp(360px, 25vw, 500px);
-            height: clamp(360px, 25vw, 500px);
             background-size: cover;
         }
 
@@ -115,10 +106,6 @@
         .inset2 {
             clip-path: inset(45% 0% 33% 10% round 10px);
         }
-
-        .chevron {
-            clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-        }
     </style>
 </head>
 
@@ -128,12 +115,9 @@
         <div class="example circle"></div>
         <div class="example ellipse"></div>
         <div class="example inset "></div>
-
         <div class="example polygon2"></div>
         <div class="example polygon3"></div>
-        <div class="example chevron">
-        </div>
-        <div class=" example inset2"></div>
+        <div class="example inset2"></div>
     </div>
 </body>
 

@@ -54,17 +54,19 @@
 
     @font-face {
       font-family: "RobotoFlex";
-      src: url('/fonts/Roboto_Flex/RobotoFlex.ttf') format("truetype");
+      src: url('fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format("truetype");
+      /* src: url('fonts/Roboto_Flex/RobotoFlex-VariableFont.ttf') format("truetype"); */
+      /* src: url(fonts/RobotoFlex.ttf) format("truetype"); */
     }
 
     @font-face {
       font-family: "Ubuntu";
-      src: url("/fonts/Ubuntu_Condensed/UbuntuCondensed-Regular.ttf") format("truetype");
+      src: url("fonts/Ubuntu_Condensed/UbuntuCondensed-Regular.ttf") format("truetype");
     }
 
     @font-face {
       font-family: "Cascadia";
-      src: url('/fonts/Microsoft/Cascadia.ttf') format("truetype");
+      src: url('fonts/Microsoft/Cascadia.ttf') format("truetype");
     }
 
     body {
@@ -143,6 +145,13 @@
       background-color: var(--colorHeaderBackground);
     }
 
+    .cardIcon {
+      /* width: 80vmax;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; */
+    }
+
     .cardTitle {
       width: 100%;
       height: 100%;
@@ -157,7 +166,6 @@
       justify-items: center;
       color: var(--colorTitle);
       user-select: none;
-      -webkit-user-select: none;
     }
 
     @media screen and (max-width: 600px) {
@@ -229,7 +237,6 @@
       text-transform: uppercase;
       cursor: pointer;
       user-select: none;
-      -webkit-user-select: none;
       font-family: RobotoFlex;
     }
 
@@ -276,6 +283,7 @@
     }
 
     .displayCode::-webkit-scrollbar-thumb {
+      /* background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%); */
       background-color: #ff9d00;
       box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
       border-radius: var(--borderRadius);
@@ -601,9 +609,9 @@
 
       cardTitle.innerText = example.title;
       cardDescription.innerText = example.description;
-      if (example.folder.length > 0) pagesPath = "/pages/"; else pagesPath = "";
-      pagesPath = "/pages/";
-      cardButtonDemo.innerHTML = `<a target="_blank" href="${pagesPath}${example.filename}">Demo</a target="_blank">`;
+      if (example.folder.length > 0) pagesPath = "pages/" + example.folder + "/"; else pagesPath = "";
+
+      cardButtonDemo.innerHTML = `<a target="_blank" href="${pagesPath}${filename}">Live</a target="_blank">`;
 
       if (!isMobile) {
         cardButtonCode.innerText = "Code";
@@ -634,7 +642,7 @@
       let folderPath = "/pages";
       examples[index++] = {
         folder: "snapping",
-        filename: "snapping.html",
+        filename: "index.html",
         title: "Scroll Snapping",
         description:
           "A CSS feature that forces a client element to snap to the parent element during scrolling.",
@@ -686,7 +694,7 @@
       };
       examples[index++] = {
         folder: "bitcoin",
-        filename: "bitcoin.html",
+        filename: "index.html",
         title: "Bitcoin API",
         description: "Real-time updating of Bitcoin price using an API.",
       };

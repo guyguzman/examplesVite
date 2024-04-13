@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Scrolling</title>
+
+    <style>
+        @font-face {
+            font-family: 'RobotoFlex';
+            src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'HansiefRough';
+            src: url('/fonts/Hansief/HansiefRough.otf') format('opentype');
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: RobotoFlex;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100vw;
+            height: 200vh;
+            background-color: #c0c0c0;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .hello {
+            font-size: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: #606060;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="hello" class="hello">Hello</div>
+        <div id="bye" class="hello" style="margin-top:600px;">Bye</div>
+    </div>
+</body>
+<script>
+    let scrolling = false;
+    var hello = document.getElementById("hello");
+
+    $(window).scroll(function () {
+        scrolling = true;
+    });
+
+    $(document).ready(function () {
+        console.log("Height: " + window.innerHeight + " Width: " + window.innerWidth);
+    });
+
+    setInterval(() => {
+        if (scrolling) {
+            scrolling = false;
+            if (window.scrollY > 600) {
+                hello.style.color = "black";
+                hello.innerText = "Hello";
+            } else {
+                hello.style.color = "red";
+                hello.innerText = "Scroll"
+            }
+        }
+    }, 250);
+
+    var observer = new IntersectionObserver(function (entries) {
+
+        var intersectionRatio;
+        var isIntersection;
+        var element;
+        var elementId;
+
+        for (let i = 0; i < entries.length; i++) {
+            intersectionRatio = entries[i]['intersectionRatio'];
+            isIntersection = entries[i]['isIntersecting'];
+            element = entries[i]['target'];
+            elementId = element.id;
+            if (intersectionRatio > .5 && intersectionRatio < 1) console.log("Element " + elementId + " > 50%");
+            if (intersectionRatio <= .5 && intersectionRatio > 0) console.log("Element " + elementId + " < 50%");
+            if (intersectionRatio == 0) console.log("Element " + elementId + " 0%");
+            if (intersectionRatio == 1) console.log("Element " + elementId + " 100%");
+        }
+
+        // if (entries[0]['isIntersecting'] === true) {
+        //     var element = entries[0]['target'];
+        //     console.log(element.id);
+        //     if (entries[0]['intersectionRatio'] === 1)
+        //         console.log('Target is fully visible in the screen');
+        //     else if (entries[0]['intersectionRatio'] > 0.5)
+        //         console.log('More than 50% of target is visible in the screen');
+        //     else
+        //         console.log('Less than 50% of target is visible in the screen');
+        // } else {
+        //     console.log('Target is not visible in the screen');
+        // }
+    }, {
+        threshold: [0, .5, 1]
+    });
+
+    observer.observe(hello);
+    observer.observe(bye);
+</script>
+
+</html>
