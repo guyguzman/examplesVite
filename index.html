@@ -601,8 +601,17 @@
 
       cardTitle.innerText = example.title;
       cardDescription.innerText = example.description;
-      if (example.folder.length > 0) pagesPath = "/pages/"; else pagesPath = "";
-      if (example.filename != "index.html") pagesPath = "/pages/"; else pagesPath = "";
+      // if (example.folder.length > 0) pagesPath = "/pages/"; else pagesPath = "";
+      // if (example.filename != "index.html") pagesPath = "/pages/"; else pagesPath = "";
+
+      switch (example.filename) {
+        case "index.html":
+          pagesPath = "";
+          break;
+        default:
+          pagesPath = "/pages/";
+
+      }
       cardButtonDemo.innerHTML = `<a target="_blank" href="${pagesPath}${example.filename}">Demo</a target="_blank">`;
 
       if (!isMobile) {
